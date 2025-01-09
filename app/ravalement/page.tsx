@@ -11,7 +11,7 @@ export default function page() {
     <main>
     <div className='part1bis'>
     <div className="backgroundimage1"><img src="/New.jpg"></img></div>
-    <Navbar2/>
+    <Navbar/>
     <h2>Ravalement</h2>
     <p>N’exécute pas un ravalement de façade qui veut. C’est une prestation qui nécessite la possession de certaines connaissances techniques et d’une expérience éprouvée. Sans la réunion de ces préalables, les résultats en matière d’esthétique et d’efficacité ne sont pas au rendez-vous. Nous ferons le nécessaire pour élever les performances de votre logement.<br></br><br></br><br></br>
       Nettoyer, décaper, repeindre: aucun pan des travaux de ravalement n’échappe à notre savoir-faire. Et nous saurons appliquer les méthodes les plus appropriées pour atteindre les résultats souhaités.</p>
@@ -46,7 +46,7 @@ export default function page() {
     </div>
     <Rge/>
     <div className='part5'>
-        <Footer2 />
+        <Footer/>
       </div>
     </main>
   )

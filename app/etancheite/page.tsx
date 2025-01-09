@@ -1,7 +1,7 @@
 import Card4 from '@/components/Card4'
 import Card5 from '@/components/Card5'
 import Footer3 from '@/components/Footer3'
-import Footer4 from '@/components/Footer4'
+import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import Navbar4 from '@/components/Navbar4'
 import React from 'react'
@@ -11,7 +11,7 @@ export default function page() {
     <main>
     <div className='part1bis'>
     <div className="backgroundimage1"><img src="/balcon.webp"></img></div>
-    <Navbar4/>
+    <Navbar/>
     <h2>Etanchéité</h2>
     <p>
 Notre équipe d'experts en étanchéité chez PMSB s'engage à vous offrir des solutions durables pour la rénovation de vos terrasses et balcons. Nous comprenons l'importance cruciale de maintenir l'intégrité de votre bâtiment en empêchant toute infiltration d'eau nuisible.<br></br><br></br> Que votre complexe d'étanchéité soit devenu obsolète en raison de l'usure naturelle ou de dommages causés par des éléments extérieurs, nous avons l'expertise nécessaire pour identifier les problèmes sous-jacents et mettre en œuvre des systèmes modernes et efficaces qui garantissent une étanchéité optimale.<br></br><br></br> Votre tranquillité d'esprit et la préservation de la valeur de votre propriété sont notre priorité, et nous sommes fiers de contribuer à la longévité et à la fonctionnalité de vos espaces extérieurs.
@@ -62,7 +62,7 @@ Notre équipe d'experts en étanchéité chez PMSB s'engage à vous offrir des s
     </div>
 
     <div className='part4bis4'>
-      <Footer4 />
+      <Footer />
     </div>
     </main>
   )

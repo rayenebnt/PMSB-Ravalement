@@ -1,5 +1,5 @@
 import Card3 from '@/components/Card3'
-import Footer3 from '@/components/Footer3'
+import Footer from '@/components/Footer'
 import Isol from '@/components/Isol'
 import Navbar from '@/components/Navbar'
 import Navbar3 from '@/components/Navbar3'
@@ -10,7 +10,7 @@ export default function page() {
 <main>
     <div className='part1bis'>
     <div className="backgroundimage1"><img src="/isolation.png"></img></div>
-    <Navbar3/>
+    <Navbar/>
     <h2>Isolation thermique</h2>
     <p>Une maison bien isolée accroît son niveau de confort. En outre, cela permet de réaliser des économies d’énergie importantes.<br></br><br></br>
       On avance des réductions qui tournent autour de 30 %. Vous avez donc pleinement raison de vous soucier de l’isolation de votre logement.<br></br><br></br>
@@ -54,7 +54,7 @@ export default function page() {
     </div>
 
     <div className='part4bis'>
-      <Footer3 />
+      <Footer/>
     </div>
     </main>
 
