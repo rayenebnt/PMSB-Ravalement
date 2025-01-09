@@ -1,48 +1,190 @@
-// Footer.tsx
+"use client";
 
-import React from 'react';
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-</head>
+import React from "react";
+import styled from "styled-components";
+
+const FooterContainer = styled.footer`
+  background-color: #404040;
+  color: white;
+  padding: 40px 20px;
+`;
+
+const FooterWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  border-bottom: 1px solid #77b5fe;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const FooterSection = styled.div`
+  flex: 1;
+  text-align: center;
+  min-width: 250px;
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #77b5fe;
+    font-weight: bold;
+  }
+
+  a {
+    display: block;
+    font-size: 14px;
+    margin: 5px 0;
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: #77b5fe; /* Change la couleur au survol */
+    }
+  }
+
+  img {
+    margin-top: 10px;
+    width: 80px;
+    height: auto;
+    border-radius: 10px;
+  }
+`;
+
+
+const Divider = styled.div`
+  border-left: 1px solid #77b5fe;
+  height: 100%;
+  margin: 0 20px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const FooterBottom = styled.div`
+  text-align: center;
+  font-size: 12px;
+  color: #77b5fe;
+`;
 
 const Footer: React.FC = () => {
   return (
-    <footer className="footer" id='contact'>
-      <div className="container">
-      <div className='adresse'>
-            <h2><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEFUlEQVR4nO2aXYhVVRTHj6KiNupojjTUQ+DHKJhUJL4EMxnSB4UopaJPvgpKL6Jlwaj1YEhvFaVBPUihZJIEoT5IGA7jJ5mICqKI4BeOMzU6Wc4v1tz/wc293rPPnbN33Yn+cGC457//a62z915rf0yS/I9KAOOB5cA2oBO4DtzTc12/fQ4sA8Yl9QagBfgCuEN+9ALbgen1EMBYYCvwp5zr11ffALQqwEf0tOi3d4Ej4qLe+hAY/W8FMR04JWfuAzuAqTW0nwZ87QR0GGiO63WlE89ozBvOAs8W0HoOOCety8CcsN5m90QaxD5gYgDNScB+J5jmf2JOnHKCGBFQeyRwwBlm8eaMJnY6nCZG0J8EnJeNjaH1UyMtyk73i8yJHHbmKgH8DjwWw4DVCcOO4OKVtr6RrU9iVOxefSlvigWmAJuBE/qy9hwHNgFNORNKv9o1hAzElh2GzhzcN4CejIreDSzOoXNU/KUhA7G1k2FDjiDSAvedKnla2duAPU4BXeTRek/cz0IGYssOQ6tnOKU9sTaDt06c28DkDN4L4nWEiCEVvSHRGRmczWlP5ND73pdigRniXCvie7noHxKtuvQGTvp67SFf+3gGZ5w4fUV8Lxe9K9Gq1Rb4TRxvlnGc7PGsIgx3ivheLnp1QDKjQDnzoyFnOjd0Z3AeF+dKEd/LRc9IdHYGx2qGoS2H3nxxj2Vwnhbn1yK+l4vuleiSDI4VO8OeGvTaMzgrxNldxPdy0Q8k+n4Gp0nFzrAug/e2OF3Aoxm8Lb5ga4b1hEQPeHiLVexQirXs1KBnvtMTxlno0Tok7sKQgUyR8T7LJh7uIhW7aujKEUSjVtr2TAgWiMRt0Wd4NQd3shU7m8xKyz1aO7VnDacUwJuydSgJDadyfxlcvNLWt765VkR8Zpr7fcOroJ0JKsC2+HwylhEbKoYVUQwkAzZWy8bBJKKRVTJyOJL+COCCbCyPYSM11OBkpLkR9JdJ+4qdqoTWLzf2kYztijh03wmt/TBjzc5kfCqg7gIFYT3eGErXZ/Tj0L1ik5uY51lVjD7hnKo8H0DPVgOGmzEO/nzGrUqjij+8gM4o5xB7VVgv8zkwBrgoB1YW0FkrjdMhz5IHe95lO8jxg2jf5KTzl+J4mc+RYcDPcmTrINp/pbZ743hY+6WPXZ/9Bcyrod3LCqK3lpuuqHC2uWfy3GvoFOWS2qxJ6gWUMs8vvu2ww/803W8UyXhRoFOPe9pJtnmGVL92m7OSegSlXSFKy41VtszXxHkrqVdQWob/JEd3W1Zz3g0HftS7H9x3dQlKy5cb5dcQzlb5apQrtRgAXtc8sPnyCvCa/rYU/WIylMCDtdgtHQEZ1idDDZSq/k4FUDFnhhQoFb4O/QNAuEvN5D+MvwHicecgMX2K0wAAAABJRU5ErkJggg=='></img>Adresse</h2>
-            <p>94380 Bonneuil-Sur-Marne</p>
-        </div>
-        <div className='telephone'>
-            <h2><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADh0lEQVR4nO2ZS0hVURSGt70Mo5TK0rQig0ZChYM0aVBEkygIqSARUxKFXsNoLI4qjMJKqEnNKjIregyiaGAPQRMiegx6UBFUWlloD/ti4Tq4Mc+559TxtoX7D+/99z7/Pnuvtf69jjEppPD/AKwH2oF+oAsoMWMJwCSgiT/RA+SZsQAgE7iuwvuAHcBMoFV/u2xcB5AD3FfBr4GiYf+91/+qjasApgEdKvQhMH8ETrn+/xGYZ1wDkA7cUpEPgBkB3BZnjxjQoOJeAPkJuHLEPii/0rgEoFuFrQzJr1C+jMs1roDBOiHIijDmko5pMa4AeKqiCiOMydegF2w2LoChAC6POK5Gxz02LoDBoic4GXGcFErBTyBt9BSGBLAQ+AV8BqZGGLdVF9JuXAFDtqQuJH8y8Ny5NAxs8s47MCEEf6/yO4FxxhUA49WaCGoTcGcBn5S72rgGoEzFvQEyAnjNyms1LgJIA+6qyH0BsdGrnG3GVQBLge/AALDCh7PLumgtMK4CqLcCP8Nn5y4q517QMXThqtulQpt8OFlWcjgvycK4CGCJXnUFVQGF9J1ymp2o7iNBFqAiZUHLfDglVvA3GlcBHLJS8ogdFGCVtXsHjIsAJgI3VGSbX2AD6zTbCRqMiwCygWcq8ookAx/eRmsxjU7GDLAIeKsiT/tlKd0Z75gdczKbAYu1CAqO+71xjZleKzVn+Hi7KjWdA8ATMa5JWYgKWA58SRTYQLGVmtvtPpkYTatODcdZYHayFrMG+OYtJmBnCqyi2a1XY88RoHFXqTfNGstRS0dzS7IWs8FazImAmBEHcGHYWxfBe8SADuPO1WTiQXoJOcnaGe+YnQnIZuLNdmrcHJX7TIJ5q61YlGZgxagtwnpoqfXQqwnuMekR5s2zemfokZwTm/AAX+al5ttxdh8ZjCGvE9rjZ5XirjNeM+JVnA8Ecq0k0RnXvIkcwE19YL+fa/7LuafrvF/jmjOMNztsne0jcVy8gN06X1s8SsM/uMpqjkvVLv2HuYqtVL82XqXhk4BXwcWG7AemRJyjwEokB0dPbbhrs/QAflj3mtqQTcBs4JGOuybHNjmqg0UVAXes2JHGRp1fr5nBKu/Zm44oPelRh1b4Musto43zU/qhtVA/j4t7fuml26SZyKiQYyUfh7RxLl8B/CCpPNOMBWgwbwfOaXbrU/dbH8XSpJCCiRe/AQGfCXGn/vU8AAAAAElFTkSuQmCC"></img>Téléphone</h2>
-            <p>06 13 40 19 01</p>
-        </div>
-        <div className='email'>
-            <h2><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACJklEQVR4nO3YS6hNcRTH8b/3q9xEiJBuXQYMGEhJkVJSklJKMVB3amh0S3dkamggJWWiZGLAgJQUSSYMiAGRR97v10f7Wrd2p3PuOffcfZxH+1t7ss9vrfX/9T/rv/faKZWUlJSUtAM9QtJrRlKXomeNoD91GeivZuQ9dqcuATvwppqRjD84hsmpQ8EkHMHvqs2OodyPF9CXOgz0xdrEWoeqNnvFdj3AmtQhYBXuVbZBzVMLy3Erbn/E3rY6SCNr2oV3saa7+YNpzOMXM3Eq97c7gWltMDAlejbr3YyzmFOhqW0kJxrEj5BcxaL/aGI+LkXtn1mD19DVNxLCzXgesifY0FIHaaTmOjyKmq+wbQxtY0ZCvBQ3QvoNh1riII3U2o/PUes2VtTRN24kAmbgeEXfTC/QwNToh1FOY1YDceMzkgs8gC8Rdh1LCjCxEFdyOz44jtjmjETwejyO0JfY2pSDf7k24VnkeoqN44xv3kgkWIDL9U6VOjmyU/F75LiGxU3kmJiRGuf8GcxuIC57Tp0s4jmlCCO5ZPvwKVLdwcoxtMtwM7RfcXCCtYsdrLAa9yPda2yvotmCF6F5iLUF1C1+QsRcnI+Uv3A0Gwni1ftw9FLGRcwrqGZrRt1Y+HCub87FJe4NFznvaJWRXIGdeDuaHx+wpwV1Wv/xAQMxEmTXQItq9OhXlNSlKI10GMod6TCUO9Jh6Nkd6XaSHiGVlJSUlKQ28BeJl84fDKCHpgAAAABJRU5ErkJggg=='></img>E-mail</h2>
-            <p>pmsb.pmsb@yahoo.fr</p>
-        </div>
-     </div>
+    <FooterContainer>
+      {/* Partie principale */}
+      <FooterWrapper>
+        {/* Section Adresse */}
+        {/* Section Adresse */}
+<FooterSection>
+  <h2>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="#77b5fe"
+    >
+      <path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+    </svg>
+    Adresse
+  </h2>
+  <p>94380 Bonneuil-Sur-Marne</p>
+</FooterSection>
 
-     <div className='bloc2'>
-          <img className="image1" src='Logo.png'></img>
-          <div className='navigation'>
-            <h2>Navigation</h2>
-            <a href='/'>Acceuil</a>
-            <a href='/ravalement'>Ravalement</a>
-            <a href='/isolation'>Isolation</a>
-            <a href='/etancheite'>Etanchéité</a>
-          </div>
-          <div className='qualification'>
-            <h2>Qualification</h2>
-            <img src='label.png'></img>
-          </div>
-          <div className='suiveznous'>
+<Divider />
+
+{/* Section Téléphone */}
+<FooterSection>
+  <h2>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="#77b5fe"
+    >
+      <path d="M6.62 10.79a15.051 15.051 0 006.59 6.59l2.2-2.2a1 1 0 011.1-.23c1.18.47 2.47.73 3.79.73a1 1 0 011 1v3.19a1 1 0 01-1 1C10.61 21 3 13.39 3 4.5a1 1 0 011-1h3.19a1 1 0 011 1c0 1.32.25 2.61.73 3.79a1 1 0 01-.23 1.1l-2.2 2.2z" />
+    </svg>
+    Téléphone
+  </h2>
+  <p>06 13 40 19 01</p>
+</FooterSection>
+
+        <Divider />
+
+        {/* Section Email */}
+        <FooterSection>
+  <h2>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      fill="#77b5fe"
+    >
+      <path d="M12 13.5L2 7.5V18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7.5l-10 6zM12 11L22 5H2l10 6z" />
+    </svg>
+    E-mail
+  </h2>
+  <p>pmsb.pmsb@yahoo.fr</p>
+</FooterSection>
+
+      </FooterWrapper>
+
+      {/* Bas du footer */}
+      <FooterWrapper>
+        {/* Logo */}
+        <FooterSection>
+          <img src="Logo.png" alt="Logo PMSB" />
+        </FooterSection>
+
+        <Divider />
+
+        {/* Navigation */}
+        <FooterSection>
+  <h2>Navigation</h2>
+  <a href="/home">Accueil</a>
+  <a href="/ravalement">Ravalement</a>
+  <a href="/isolation">Isolation</a>
+  <a href="/etancheite">Étanchéité</a>
+</FooterSection>
+
+        <Divider />
+
+        {/* Certification */}
+        <FooterSection>
+          <h2>Qualification</h2>
+          <img src="label.png" alt="Certification" />
+        </FooterSection>
+
+        <Divider />
+
+        {/* Réseaux sociaux */}
+        <FooterSection>
           <h2>Suivez-nous</h2>
-          <a href='https://www.linkedin.com/in/sarl-pmsb-740726280/' target='_blank'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAByElEQVR4nO2ZP0/CQBjG22scXI2Tiauy+glc3MC4+iX8DA6G9IiDJsYBBhdNHJwcNRGIHY3xjoBCgkTEAUP8A63yt7ymBVQEIq2mvSb3JM/UN5fnd+97N1wFgYuLi4tpSTJdQTKJI5lqCFNwxDLVRExjkkyW/xRexAQ7FhoPt4hJ0P7OuxwedS2FSMAygDk2DIRHRhdkGrUOgInqdnDUs0wqNgAYCI6//G8AvkgazgsaaA0dlIIG8+G0twCUggbfFb/XvAWgNfQ+ALWuewtA8XoHfJG0CWF0IpZXYS584y0A5JIFDoA7OzFM43yf3b2G7YsSpEpVqDbb8FprmaO4dvoAk5sJtgEW9jLw+NaEUbosvsPMTopdgOxLHX5TLK+CxCrAuPIf5dgE0Ntgzv/S4S2sHucheqcOrdtPPrMJsK4U+2omQgk4yVUG6jJPNTYBpreTA+ssHmQH6sq1FnsA7R/fe57aSo5d63oH7K6FOADmHTDFRwjzQ0z5LYT4NWpRo24Otyx4+mkR07JlAON9noHgYFjE9MwygPFzwe3gqGsJX/ktA3S6QIJuhxcx2bAV/rMTIRIw3uedPRNENcbG9s5zcXFxCU7pA5Jwntel+S2tAAAAAElFTkSuQmCC'></img>Linkedin</a>
-        </div>
-        </div>
-      <p className='c'>© Copyright 2023 PMSB</p>
-    </footer>
+          <p>
+          <a href="https://www.linkedin.com/in/sarl-pmsb-740726280/" target="_blank" rel="noopener noreferrer">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAByElEQVR4nO2ZP0/CQBjG22scXI2Tiauy+glc3MC4+iX8DA6G9IiDJsYBBhdNHJwcNRGIHY3xjoBCgkTEAUP8A63yt7ymBVQEIq2mvSb3JM/UN5fnd+97N1wFgYuLi4tpSTJdQTKJI5lqCFNwxDLVRExjkkyW/xRexAQ7FhoPt4hJ0P7OuxwedS2FSMAygDk2DIRHRhdkGrUOgInqdnDUs0wqNgAYCI6//G8AvkgazgsaaA0dlIIG8+G0twCUggbfFb/XvAWgNfQ+ALWuewtA8XoHfJG0CWF0IpZXYS584y0A5JIFDoA7OzFM43yf3b2G7YsSpEpVqDbb8FprmaO4dvoAk5sJtgEW9jLw+NaEUbosvsPMTopdgOxLHX5TLK+CxCrAuPIf5dgE0Ntgzv/S4S2sHucheqcOrdtPPrMJsK4U+2omQgk4yVUG6jJPNTYBpreTA+ssHmQH6sq1FnsA7R/fe57aSo5d63oH7K6FOADmHTDFRwjzQ0z5LYT4NWpRo24Otyx4+mkR07JlAON9noHgYFjE9MwygPFzwe3gqGsJX/ktA3S6QIJuhxcx2bAV/rMTIRIw3uedPRNENcbG9s5zcXFxCU7pA5Jwntel+S2tAAAAAElFTkSuQmCC"
+              alt="LinkedIn"></img>
+            </a>
+          </p>
+        </FooterSection>
+      </FooterWrapper>
+
+      <FooterBottom>© Copyright 2023 PMSB</FooterBottom>
+    </FooterContainer>
   );
 };
 

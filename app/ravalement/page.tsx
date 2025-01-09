@@ -23,7 +23,7 @@ export default function page() {
     </div>
     <div className='cardspace2'>
     <Card2
-        imageSrc="/pierretaille.jpg"
+        imageSrc="/pierre.jpg"
         title="Pierre de taille"
         description="Reconstituer une pierre désagrégée, des décors ou modénatures, faire une retaille de la pierre ou une incrustation nécessite des experts compétents. PMSB est compétente pour la pierre de taille."
         />
