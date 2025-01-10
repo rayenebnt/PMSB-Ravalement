@@ -1,0 +1,65 @@
+.FooterContainer {
+  background-color: #404040;
+  color: white;
+  padding: 40px 20px;
+}
+
+.FooterWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  border-bottom: 1px solid #77b5fe;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.FooterSection {
+  flex: 1;
+  text-align: center;
+  min-width: 250px;
+}
+
+.FooterSection h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #77b5fe;
+  font-weight: bold;
+}
+
+.FooterSection a {
+  display: block;
+  font-size: 14px;
+  margin: 5px 0;
+  color: white;
+  text-decoration: none;
+}
+
+.FooterSection a:hover {
+  text-decoration: underline;
+  color: #77b5fe;
+}
+
+.FooterSection img {
+  margin-top: 10px;
+  width: 80px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.Divider {
+  border-left: 1px solid #77b5fe;
+  height: 100%;
+  margin: 0 20px;
+}
+
+.FooterBottom {
+  text-align: center;
+  font-size: 12px;
+  color: #77b5fe;
+}
