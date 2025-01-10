@@ -31,7 +31,10 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@swc/core": "^1.10.7",
+    "@swc/helpers": "^0.5.15",
     "@types/react-slick": "^0.23.10",
+    "babel-plugin-styled-components": "^2.1.4",
     "gh-pages": "^6.0.0"
   }
 }

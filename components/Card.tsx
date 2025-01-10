@@ -3,14 +3,12 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-// Définition des props avec TypeScript
 interface CardProps {
   imageSrc: string;
   title: string;
   description: string;
 }
 
-// Styles pour le conteneur principal de la carte
 const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,20 +30,17 @@ const CardContainer = styled.div`
   }
 `;
 
-// Styles pour l'image (nécessaire pour next/image)
 const CardImageWrapper = styled.div`
   width: 100%;
-  position: relative; /* Requis pour next/image avec layout="fill" */
-  aspect-ratio: 1; /* Proportion carrée */
+  height: 200px;
+  position: relative; /* Requis pour next/image */
 `;
 
-// Contenu de la carte (titre et description)
 const CardContent = styled.div`
   padding: 16px;
   text-align: center;
 `;
 
-// Titre de la carte
 const CardTitle = styled.h2`
   font-size: 20px;
   font-weight: bold;
@@ -53,21 +48,22 @@ const CardTitle = styled.h2`
   color: #333333;
 `;
 
-// Description de la carte
 const CardDescription = styled.p`
   font-size: 16px;
   color: #666666;
 `;
 
-
-
-// Composant Card
 const Card: React.FC<CardProps> = ({ imageSrc, title, description }) => {
   return (
     <CardContainer>
       <CardImageWrapper>
-        {/* Gestion des images avec next/image */}
-        <Image src={imageSrc} alt={title} layout="fill" objectFit="cover" />
+        <Image
+          src={imageSrc}
+          alt={title}
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 100vw, 300px"
+        />
       </CardImageWrapper>
       <CardContent>
         <CardTitle>{title}</CardTitle>
