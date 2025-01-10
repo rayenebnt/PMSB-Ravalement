@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import Image from "next/image";
+import "../app/css/Card3.css";
 
 interface CardProps {
   imageSrc: string;

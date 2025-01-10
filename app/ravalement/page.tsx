@@ -1,126 +1,44 @@
 "use client";
 
 import React from "react";
-import styled from "styled-components";
-import Card2 from "@/components/Card2";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import Rge from "@/components/Rge";
 import Head from "next/head";
-
-const PageContainer = styled.div`
-  font-family: Arial, sans-serif;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-`;
-
-const FixedNavbar = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(64, 64, 64, 0.9); /* Fond semi-transparent */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour effet visuel */
-`;
-
-const FullScreenSection = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("/New.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-`;
-
-const Section = styled.div`
-  padding: 60px 20px;
-
-  &:nth-child(even) {
-    background-color: #404040;
-    color: white;
-  }
-`;
-
-const SectionHeader = styled.h2`
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: white;
-`;
-
-const SectionText = styled.p`
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px auto;
-  font-size: 18px;
-  line-height: 1.6;
-  color: white;
-`;
-
-const ServicesContainer = styled.div`
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 20px;
-`;
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import Card2 from "@/components/Card2";
+import Rge from "@/components/Rge";
+import "../css/Ravalement.css";
 
 export default function RavalementPage() {
   return (
-    <PageContainer>
+    <div className="page-container">
       <Head>
         <title>PMSB - Ravalement</title>
       </Head>
       <main>
         {/* Navbar fixée */}
-        <FixedNavbar>
+        <div className="fixed-navbar">
           <Navbar />
-        </FixedNavbar>
+        </div>
 
         {/* Section de couverture */}
-        <FullScreenSection>
-          <h1
-            style={{
-              fontSize: "3rem",
-              fontWeight: "bold",
-              marginBottom: "20px",
-            }}
-          >
-            Ravalement
-          </h1>
-          <p
-            style={{
-              maxWidth: "800px",
-              fontSize: "1.2rem",
-              lineHeight: "1.6",
-            }}
-          >
+        <section className="full-screen-section">
+          <h1 className="main-title">Ravalement</h1>
+          <p className="main-text">
             N’exécute pas un ravalement de façade qui veut. C’est une prestation
             qui nécessite la possession de certaines connaissances techniques
             et d’une expérience éprouvée. Nettoyer, décaper, repeindre : aucun
             pan des travaux de ravalement n’échappe à notre savoir-faire.
           </p>
-        </FullScreenSection>
+        </section>
 
         {/* Section expertises */}
-        <Section>
-          <SectionHeader>Nos différentes expertises</SectionHeader>
-          <SectionText>
+        <section className="section">
+          <h2 className="section-header">Nos différentes expertises</h2>
+          <p className="section-text">
             Nous mettons tout le nécessaire en œuvre pour vous offrir des
             travaux de ravalement de haute qualité.
-          </SectionText>
-          <ServicesContainer>
+          </p>
+          <div className="services-container">
             <Card2
               imageSrc="/pierre.jpg"
               title="Pierre de taille"
@@ -141,17 +59,17 @@ export default function RavalementPage() {
               title="Imperméabilisation"
               description="L’imperméabilisation d’une façade est un ouvrage délicat qui requiert des qualifications précises. Nous prenons en charge les 4 niveaux différents d’imperméabilité de façade (I1, I2, I3, I4)."
             />
-          </ServicesContainer>
-        </Section>
+          </div>
+        </section>
 
         {/* Section RGE */}
-        <Section>
+        <section className="section">
           <Rge />
-        </Section>
+        </section>
 
         {/* Footer */}
         <Footer />
       </main>
-    </PageContainer>
+    </div>
   );
 }

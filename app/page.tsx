@@ -17,11 +17,11 @@ const Carousel: React.FC = () => {
       text: "Piochage total et refait en Saint Acier, Paris 75018",
     },
     {
-      imageUrl: "/imagebien3.jpg",
+      imageUrl: "/imagebien3.JPG",
       text: "Ravalement Chaux Sable, Paris 75008",
     },
     {
-      imageUrl: "/image_real.jpg",
+      imageUrl: "/image_real.JPG",
       text: "Travaux de Ravalement et de Zinguerie, Paris 75002",
     },
   ];
@@ -93,7 +93,7 @@ export default function Home() {
             <Contact />
           </div>
           <img
-            src="/image_bien.jpg"
+            src="/image_bien.JPG"
             alt="Travaux bien réalisés"
             style={{
               width: "100%",

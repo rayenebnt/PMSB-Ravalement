@@ -1,0 +1,52 @@
+.CardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 300px;
+}
+
+.CardContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .CardContainer {
+    max-width: 100%;
+  }
+}
+
+.CardImageWrapper {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 4 / 3; /* Maintient une proportion */
+  overflow: hidden;
+}
+
+.StyledImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.CardContent {
+  padding: 16px;
+  text-align: center;
+}
+
+.CardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 8px 0;
+  color: #404040;
+}
+
+.CardDescription {
+  font-size: 16px;
+  color: #666666;
+}

@@ -24,8 +24,42 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
   text-align: center;
+}
+
+/* Superposition semi-transparente */
+#FullScreenSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Couche noire semi-transparente */
+  z-index: 1;
+  pointer-events: none; /* Permet aux clics de passer au travers */
+}
+
+#FullScreenSection h1,
+#FullScreenSection p,
+.contact-button {
+  position: relative; /* Place le contenu au-dessus de la pseudo-couche */
+  z-index: 2;
+}
+
+
+#FullScreenSection h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffffff; /* Blanc pur */
+}
+
+#FullScreenSection p {
+  max-width: 800px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #ffffff;
 }
 
 /* Navbar */
@@ -145,7 +179,3 @@ body {
 .FooterContainer {
   margin-top: 20px;
 }
-
-
-
-
