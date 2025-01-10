@@ -1,3 +1,4 @@
+/* Navbar */
 .NavbarContainer {
   display: flex;
   justify-content: space-between;
@@ -11,10 +12,10 @@
   z-index: 1000;
 }
 
-.NavbarLeft {
+/* Logo toujours visible */
+.NavbarLogo {
   display: flex;
   align-items: center;
-  gap: 30px;
 }
 
 .Logo {
@@ -22,6 +23,7 @@
   width: auto;
 }
 
+/* Menu burger */
 .BurgerMenu {
   display: none;
 }
@@ -92,5 +94,10 @@
     left: 0;
     padding: 20px;
     z-index: 999;
+    gap: 15px;
+  }
+
+  .NavbarLinks.show {
+    display: flex;
   }
 }

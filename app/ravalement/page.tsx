@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Card2 from "@/components/Card2";
 import Rge from "@/components/Rge";
 import "../css/Ravalement.css";
+import Card from "@/components/Card";
 
 export default function RavalementPage() {
   return (
@@ -39,22 +40,22 @@ export default function RavalementPage() {
             travaux de ravalement de haute qualité.
           </p>
           <div className="services-container">
-            <Card2
+            <Card
               imageSrc="/pierre.jpg"
               title="Pierre de taille"
               description="Reconstituer une pierre désagrégée, des décors ou modénatures, faire une retaille de la pierre ou une incrustation nécessite des experts compétents. PMSB est compétente pour la pierre de taille."
             />
-            <Card2
+            <Card
               imageSrc="/isolation.png"
               title="Brique"
               description="Le travail de la brique est une spécialité particulière des travaux de ravalement. La rénovation d’une telle façade demande une compétence particulière que dispose notre entreprise."
             />
-            <Card2
+            <Card
               imageSrc="/platre.jpg"
               title="Plâtre"
               description="Le travail de plâtrerie en ravalement est particulièrement délicat car il est exposé aux intempéries et à la lumière. Cela demande une équipe spécialisée et formée à ce type d’ouvrage."
             />
-            <Card2
+            <Card
               imageSrc="/impermeable.jpg"
               title="Imperméabilisation"
               description="L’imperméabilisation d’une façade est un ouvrage délicat qui requiert des qualifications précises. Nous prenons en charge les 4 niveaux différents d’imperméabilité de façade (I1, I2, I3, I4)."

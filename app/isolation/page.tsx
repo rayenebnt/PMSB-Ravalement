@@ -4,7 +4,6 @@ import React from "react";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Card3 from "@/components/Card3";
 import Isol from "@/components/Isol";
 import "../css/Isolation.css";
 import Card2 from "@/components/Card2";

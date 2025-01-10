@@ -8,6 +8,7 @@
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 300px;
+  width: 100%; /* Ajoute cette ligne pour que la carte occupe toute la largeur disponible */
 }
 
 .CardContainer:hover {
@@ -22,7 +23,7 @@
 }
 
 .CardImageWrapper {
-  width: 100%;
+  width: 100%; /* Assure que l'image occupe toute la largeur de la carte */
   position: relative;
   aspect-ratio: 4 / 3; /* Maintient une proportion */
   overflow: hidden;
@@ -30,8 +31,8 @@
 
 .StyledImage {
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  width: 100%; /* L'image remplit complètement la largeur de son conteneur */
+  height: 100%; /* L'image remplit complètement la hauteur selon l'aspect-ratio */
 }
 
 .CardContent {

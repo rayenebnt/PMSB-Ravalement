@@ -1,6 +1,4 @@
 import React from "react";
-import Card4 from "@/components/Card4";
-import Card5 from "@/components/Card5";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";

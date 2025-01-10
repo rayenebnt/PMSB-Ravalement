@@ -12,16 +12,10 @@ const Navbar = () => {
 
   return (
     <nav className="NavbarContainer">
-      {/* Section gauche */}
-      <div className="NavbarLeft">
-        <a href="/">
+      {/* Logo toujours visible */}
+      <div className="NavbarLogo">
+        <a href="/" className="LogoLink">
           <img src="Logo.png" alt="Logo" className="Logo" />
-        </a>
-        <a href="#qui-sommes-nous" className="NavbarLink">
-          Qui sommes nous ?
-        </a>
-        <a href="#contact" className="NavbarLink">
-          Contact
         </a>
       </div>
 
@@ -37,6 +31,17 @@ const Navbar = () => {
 
       {/* Liens de navigation */}
       <div className={`NavbarLinks ${isOpen ? "show" : ""}`}>
+        {isOpen && (
+          <a href="/" className="NavbarLink">
+            Accueil
+          </a>
+        )}
+        <a href="#qui-sommes-nous" className="NavbarLink">
+          Qui sommes-nous ?
+        </a>
+        <a href="#contact" className="NavbarLink">
+          Contact
+        </a>
         <a href="/ravalement" className="NavbarLink">
           Ravalement
         </a>

@@ -33,6 +33,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Superposition semi-transparente */
@@ -47,6 +49,7 @@
   z-index: 1; /* Derrière le texte */
 }
 
+/* Titre principal */
 .full-screen-section .main-title {
   font-size: 3rem;
   font-weight: bold;
@@ -55,6 +58,7 @@
   z-index: 2; /* Par-dessus la superposition */
 }
 
+/* Texte principal */
 .full-screen-section .main-text {
   max-width: 800px;
   font-size: 1.2rem;
@@ -96,4 +100,54 @@
   flex-wrap: wrap;
   justify-content: center;
   padding: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .full-screen-section {
+    height: auto;
+    padding: 20px;
+    min-height: 100vh;
+  }
+
+  .full-screen-section .main-title {
+    font-size: 2.5rem; /* Réduction du titre */
+  }
+
+  .full-screen-section .main-text {
+    font-size: 1rem; /* Réduction de la taille du texte */
+    line-height: 1.4;
+  }
+
+  .services-container {
+    gap: 10px;
+  }
+
+  .section {
+    padding: 40px 15px;
+  }
+
+  .section-header {
+    font-size: 24px;
+  }
+
+  .section-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .full-screen-section .main-title {
+    font-size: 2rem;
+  }
+
+  .full-screen-section .main-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .services-container {
+    flex-direction: column; /* Empile les éléments verticalement */
+    align-items: center;
+  }
 }
