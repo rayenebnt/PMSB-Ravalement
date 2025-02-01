@@ -12,7 +12,7 @@
   z-index: 1000;
 }
 
-/* Logo toujours visible */
+/* Logo */
 .NavbarLogo {
   display: flex;
   align-items: center;
@@ -26,6 +26,18 @@
 /* Menu burger */
 .BurgerMenu {
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.BurgerMenu div {
+  background-color: white;
+  height: 3px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .BurgerMenu.open div:nth-child(1) {
@@ -40,14 +52,16 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+/* Liens de navigation */
 .NavbarLinks {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
+/* Masquer les liens en version mobile */
 .NavbarLinks.show {
-  display: flex;
+  display: flex !important;
 }
 
 .NavbarLink {
@@ -61,7 +75,7 @@
   color: #77b5fe;
 }
 
-/* Responsive */
+/* Responsive pour mobile */
 @media (max-width: 1024px) {
   .NavbarContainer {
     padding: 10px 20px;
@@ -69,18 +83,6 @@
 
   .BurgerMenu {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 25px;
-    cursor: pointer;
-  }
-
-  .BurgerMenu div {
-    background-color: white;
-    height: 3px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
   }
 
   .NavbarLinks {

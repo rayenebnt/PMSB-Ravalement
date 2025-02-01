@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
 
         <div className="FooterSection">
           <h2>Navigation</h2>
-          <a href="/home">Accueil</a>
+          <a href="/">Accueil</a>
           <a href="/ravalement">Ravalement</a>
           <a href="/isolation">Isolation</a>
           <a href="/etancheite">Étanchéité</a>
