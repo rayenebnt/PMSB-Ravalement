@@ -46,7 +46,7 @@ export default function RavalementPage() {
               description="Reconstituer une pierre désagrégée, des décors ou modénatures, faire une retaille de la pierre ou une incrustation nécessite des experts compétents. PMSB est compétente pour la pierre de taille."
             />
             <Card
-              imageSrc="/isolation.png"
+              imageSrc="/brique.jpg"
               title="Brique"
               description="Le travail de la brique est une spécialité particulière des travaux de ravalement. La rénovation d’une telle façade demande une compétence particulière que dispose notre entreprise."
             />

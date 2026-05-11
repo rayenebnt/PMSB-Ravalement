@@ -43,8 +43,9 @@ const Card: React.FC<CardProps> = ({ imageSrc, title, description }) => {
           src={imageSrc}
           alt={title}
           fill
-          style={{ objectFit: "cover" }}
-          sizes="(max-width: 768px) 100vw, 300px"
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          sizes="(max-width: 768px) calc(100vw - 48px), 300px"
+          quality={90}
         />
       </div>
       <div className="CardContent">

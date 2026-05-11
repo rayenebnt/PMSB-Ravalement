@@ -65,7 +65,7 @@ export default function EtancheitePage() {
               description="La peinture résine, faite de résines synthétiques, offre une protection robuste contre les intempéries, les UV, les produits chimiques et l'abrasion, tout en préservant l'esthétique."
             />
             <Card2
-              imageSrc="/laque.webp"
+              imageSrc="/laque.jpg"
               title="Laque de finition"
               description="La laque de finition est un revêtement lisse et brillant composé de résines, offrant une protection durable et améliorant l'esthétique de surfaces telles que le bois, le métal, et les meubles."
             />
