@@ -72,8 +72,7 @@ const Footer: React.FC = () => {
         <div className="footer-col footer-col-qual">
           <h3 className="footer-col-title">Qualification</h3>
           <div className="footer-badges">
-            <img src="label.png"            alt="Label qualité" />
-            <img src="certification-rge.png" alt="Certification RGE" />
+            <img src="label.png" alt="Certification RGE" />
           </div>
         </div>
 
