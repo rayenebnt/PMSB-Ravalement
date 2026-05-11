@@ -1,19 +1,30 @@
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --accent:        #f97316;
+  --accent-light:  #fb923c;
+  --accent-dim:    rgba(249, 115, 22, 0.20);
+  --accent-glow:   0 0 40px rgba(249, 115, 22, 0.45);
+
+  --bg-deep:   #06080f;
+  --bg-dark:   #080b14;
+  --bg-mid:    #0b1020;
+  --bg-card:   #0e1628;
+
+  --text:      #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.58);
+  --text-dim:   rgba(255, 255, 255, 0.35);
+
+  --radius: 14px;
+  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+html { scroll-behavior: smooth; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background-color: #404040;
+  background-color: var(--bg-deep);
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
-
-

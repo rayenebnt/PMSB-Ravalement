@@ -1,28 +1,44 @@
 .contact-button {
-  display: inline-block;
-  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center; gap: 8px;
+  padding: 14px 36px;
   color: #fff;
-  background-color: #404040;
-  border: 2px solid #77b5fe;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  z-index: 3; /* Assure la priorité d'interaction */
-  position: relative;
+  background: transparent;
+  border: 1.5px solid var(--accent, #f97316);
+  border-radius: 4px;
+  font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; text-align: center;
+  position: relative; overflow: hidden;
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  z-index: 3; cursor: pointer;
+}
+
+/* Fill slide-in from left */
+.contact-button::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, #f97316, #fb923c);
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform 0.38s cubic-bezier(0.16,1,0.3,1);
+  z-index: -1;
+}
+/* Shimmer */
+.contact-button::before {
+  content: ''; position: absolute;
+  top: 0; left: -110%; width: 70%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+  transition: left 0.55s ease; z-index: 1; pointer-events: none;
 }
 
 .contact-button:hover {
-  background-color: #77b5fe;
-  color: #404040;
+  color: #fff;
+  box-shadow: 0 0 32px rgba(249,115,22,0.55), 0 8px 24px rgba(0,0,0,0.3);
+  transform: translateY(-2px);
 }
+.contact-button:hover::before  { left: 120%; }
+.contact-button:hover::after   { transform: scaleX(1); }
+.contact-button:active         { transform: translateY(0); }
 
 @media (max-width: 768px) {
-  .contact-button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
+  .contact-button { font-size: 0.78rem; padding: 12px 26px; }
 }
-

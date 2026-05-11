@@ -1,105 +1,85 @@
-/* Navbar */
 .NavbarContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px;
-  background-color: #404040;
-  color: white;
-  height: 80px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 0 56px;
+  background: rgba(6, 8, 15, 0.86);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.09);
+  height: 72px;
+  position: sticky; top: 0; z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.NavbarContainer:hover {
+  box-shadow: 0 4px 48px rgba(0,0,0,0.5);
 }
 
-/* Logo */
-.NavbarLogo {
-  display: flex;
-  align-items: center;
-}
-
+.NavbarLogo { display: flex; align-items: center; }
+.LogoLink   { display: flex; align-items: center; }
 .Logo {
-  height: 60px;
-  width: auto;
+  height: 50px; width: auto;
+  filter: drop-shadow(0 0 6px rgba(249,115,22,0.18));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+.Logo:hover {
+  filter: drop-shadow(0 0 16px rgba(249,115,22,0.55));
+  transform: scale(1.05);
 }
 
-/* Menu burger */
-.BurgerMenu {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 25px;
-  cursor: pointer;
-}
-
+/* Burger */
+.BurgerMenu { display: none; }
 .BurgerMenu div {
-  background-color: white;
-  height: 3px;
-  border-radius: 5px;
+  background: white; height: 2px; border-radius: 2px;
   transition: all 0.3s ease;
 }
+.BurgerMenu.open div:nth-child(1) { transform: rotate(45deg) translate(5px,5px);  background: #f97316; }
+.BurgerMenu.open div:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.BurgerMenu.open div:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); background: #f97316; }
 
-.BurgerMenu.open div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.BurgerMenu.open div:nth-child(2) {
-  opacity: 0;
-}
-
-.BurgerMenu.open div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Liens de navigation */
-.NavbarLinks {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-/* Masquer les liens en version mobile */
-.NavbarLinks.show {
-  display: flex !important;
-}
+/* Links */
+.NavbarLinks { display: flex; align-items: center; gap: 34px; }
 
 .NavbarLink {
   text-decoration: none;
-  color: white;
-  font-size: 16px;
-  transition: color 0.3s ease;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.85rem; font-weight: 500;
+  letter-spacing: 0.03em;
+  position: relative;
+  transition: color 0.25s ease;
+  padding: 4px 0;
 }
-
-.NavbarLink:hover {
-  color: #77b5fe;
+.NavbarLink::after {
+  content: ''; position: absolute;
+  bottom: -2px; left: 0; width: 0; height: 1.5px;
+  background: #f97316; border-radius: 2px;
+  transition: width 0.32s cubic-bezier(0.16,1,0.3,1);
 }
+.NavbarLink:hover { color: #f97316; }
+.NavbarLink:hover::after { width: 100%; }
 
-/* Responsive pour mobile */
+/* Responsive */
 @media (max-width: 1024px) {
-  .NavbarContainer {
-    padding: 10px 20px;
-  }
-
+  .NavbarContainer { padding: 0 20px; height: 64px; }
   .BurgerMenu {
-    display: flex;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    width: 26px; height: 20px; cursor: pointer; z-index: 1100;
   }
-
   .NavbarLinks {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    background-color: #404040;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    padding: 20px;
-    z-index: 999;
-    gap: 15px;
+    display: none; flex-direction: column;
+    align-items: flex-start; width: 100%;
+    background: rgba(6,8,15,0.97);
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    position: absolute; top: 64px; left: 0;
+    padding: 28px 28px; z-index: 999; gap: 22px;
+    border-bottom: 1px solid rgba(249,115,22,0.1);
+    animation: menuIn 0.28s ease;
   }
-
-  .NavbarLinks.show {
-    display: flex;
+  @keyframes menuIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
+  .NavbarLinks.show { display: flex; }
+  .NavbarLink { font-size: 1rem; }
 }

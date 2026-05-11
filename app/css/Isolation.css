@@ -1,33 +1,29 @@
-/* Page container */
 .page-container {
-  font-family: Arial, sans-serif;
-  color: #333;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #ffffff;
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  background-color: var(--bg-deep, #06080f);
 }
 
-/* Navbar fixe */
 .fixed-navbar {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(64, 64, 64, 0.9);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Section plein écran */
+/* ── Hero ── */
 .full-screen-section {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-image: url("/isolation.png");
+  background-image: url("/laine.jpg");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,117 +33,99 @@
   box-sizing: border-box;
 }
 
-/* Superposition semi-transparente pour améliorer la lisibilité */
 .full-screen-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Noir avec une opacité de 50% */
-  z-index: 1; /* Derrière le texte */
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    rgba(6, 8, 15, 0.86) 0%,
+    rgba(8, 11, 20, 0.62) 55%,
+    rgba(249, 115, 22, 0.06) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
-/* Titre principal */
+.full-screen-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 160px;
+  background: linear-gradient(transparent, #06080f);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* position: relative obligatoire pour que z-index fonctionne */
 .full-screen-section .main-title {
-  font-size: 3rem;
-  font-weight: bold;
+  position: relative;
+  z-index: 3;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-shadow: 0 0 60px rgba(249,115,22,0.35), 0 4px 24px rgba(0,0,0,0.6);
   margin-bottom: 20px;
-  color: #ffffff; /* Blanc pur */
-  z-index: 2; /* Par-dessus la superposition */
 }
 
-/* Texte principal */
 .full-screen-section .main-text {
-  max-width: 800px;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #ffffff; /* Blanc pur */
-  z-index: 2; /* Par-dessus la superposition */
+  position: relative;
+  z-index: 3;
+  max-width: 760px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.78);
 }
 
-/* Sections générales */
+/* ── Sections ── */
 .section {
-  padding: 60px 20px;
+  padding: 80px 48px;
+  background: linear-gradient(180deg, #06080f 0%, #080b14 100%);
+  color: #ffffff;
 }
 
 .section:nth-child(even) {
-  background-color: #404040;
-  color: white;
+  background: linear-gradient(180deg, #0c1b2e 0%, #0f2238 100%);
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 28px;
-  color: white;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  background: linear-gradient(128deg, #ffffff 30%, #f97316 72%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section-text {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto 40px auto;
-  font-size: 18px;
-  line-height: 1.6;
-  color: white;
+  max-width: 780px;
+  margin: 0 auto 44px;
+  font-size: 1.02rem;
+  line-height: 1.82;
+  color: rgba(255, 255, 255, 0.58);
 }
 
-/* Conteneur des matériaux */
 .services-container {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  padding: 20px 0;
 }
 
-/* Responsive design */
+/* ── Responsive ── */
 @media (max-width: 1024px) {
-  .full-screen-section {
-    height: auto; /* Permet d'ajuster la hauteur si le contenu dépasse */
-    padding: 20px;
-    min-height: 100vh; /* Garantit que la section occupe toute la hauteur de l'écran */
-  }
-
-  .full-screen-section .main-title {
-    font-size: 2.5rem; /* Réduit la taille du titre */
-  }
-
-  .full-screen-section .main-text {
-    font-size: 1rem; /* Réduit la taille du texte */
-    line-height: 1.4;
-  }
-
-  .services-container {
-    gap: 10px; /* Réduit l'espacement entre les éléments */
-  }
-
-  .section {
-    padding: 40px 15px;
-  }
-
-  .section-header {
-    font-size: 24px; /* Réduit la taille des en-têtes */
-  }
-
-  .section-text {
-    font-size: 16px; /* Réduit la taille des descriptions */
-  }
+  .section { padding: 60px 24px; }
+  .full-screen-section { background-attachment: scroll; }
 }
 
 @media (max-width: 768px) {
-  .full-screen-section .main-title {
-    font-size: 2rem;
-  }
-
-  .full-screen-section .main-text {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  .services-container {
-    flex-direction: column; /* Empile les éléments verticalement */
-    align-items: center;
-  }
+  .full-screen-section { height: auto; min-height: 100vh; }
+  .services-container { flex-direction: column; align-items: center; }
+  .section { padding: 52px 20px; }
 }

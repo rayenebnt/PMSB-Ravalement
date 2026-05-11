@@ -1,25 +1,23 @@
-/* Global Styles */
 .page-container {
-  font-family: Arial, sans-serif;
-  color: #333;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #fff;
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  background-color: #060d18;
 }
 
-/* Navbar fixe */
-.navbar {
+.navbar,
+.fixed-navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(64, 64, 64, 0.9);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Section plein écran */
+/* Hero */
 .full-screen-section {
   position: relative;
   width: 100vw;
@@ -27,7 +25,7 @@
   background-image: url("/balcon.webp");
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,77 +39,80 @@
 .full-screen-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(6, 13, 24, 0.82) 0%,
+    rgba(9, 20, 34, 0.58) 55%,
+    rgba(249, 115, 22, 0.07) 100%
+  );
   z-index: 1;
+}
+
+.full-screen-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(transparent, #060d18);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .full-screen-section h1,
 .full-screen-section p {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   margin: 0;
 }
 
 .full-screen-section h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 16px;
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 60px rgba(249, 115, 22, 0.35), 0 4px 24px rgba(0, 0, 0, 0.6);
 }
 
 .full-screen-section p {
-  max-width: 800px;
-  font-size: 1.2rem;
-  line-height: 1.6;
+  max-width: 760px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
 }
-
-/* Responsive pour mobile */
-@media (max-width: 768px) {
-  .full-screen-section {
-    padding: 10px;
-    height: auto; /* Permet d'ajuster la hauteur si le contenu dépasse */
-    min-height: 100vh; /* Garantit que la section occupe toute la hauteur de l'écran */
-  }
-
-  .full-screen-section h1 {
-    font-size: 2rem; /* Réduit la taille du titre */
-  }
-
-  .full-screen-section p {
-    font-size: 1rem; /* Réduit la taille du texte */
-    line-height: 1.4; /* Réduit l'espacement entre les lignes */
-    max-width: 100%; /* S'assure que le texte occupe toute la largeur disponible */
-    word-wrap: break-word; /* Permet de casser les mots si nécessaire */
-  }
-}
-
 
 /* Sections */
 .section {
-  padding: 60px 20px;
-  background-color: #404040;
+  padding: 80px 48px;
+  background: linear-gradient(180deg, #060d18 0%, #091422 100%);
 }
 
 .alternate-section {
-  background-color: #404040;
+  background: linear-gradient(180deg, #0c1b2e 0%, #0f2238 100%);
   color: white;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 28px;
-  color: white;
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  background: linear-gradient(128deg, #ffffff 30%, #f97316 72%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.025em;
 }
 
 .alternate-section .section-header {
-  color: white;
+  background: linear-gradient(128deg, #ffffff 30%, #f97316 72%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Services container */
 .services-container {
   display: flex;
   gap: 20px;
@@ -120,12 +121,13 @@
   padding: 20px;
 }
 
-.fixed-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: rgba(64, 64, 64, 0.9);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px) {
+  .full-screen-section {
+    padding: 10px;
+    height: auto;
+    min-height: 100vh;
+    background-attachment: scroll;
+  }
+
+  .section { padding: 60px 22px; }
 }

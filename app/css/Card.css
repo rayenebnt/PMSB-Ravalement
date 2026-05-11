@@ -1,45 +1,133 @@
 .CardContainer {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #0f2035, #091829);
+  border-radius: 16px;
+  border: 1px solid rgba(249, 115, 22, 0.10);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 300px;
+  transform-style: preserve-3d;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0);
+  transition: transform 0.12s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.45);
+  cursor: default;
 }
 
 .CardContainer:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  border-color: rgba(249, 115, 22, 0.45);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.55),
+    0 0 36px rgba(249, 115, 22, 0.12);
 }
 
-@media (max-width: 768px) {
-  .CardContainer {
-    max-width: 100%;
-  }
+/* Radial cursor-following shine */
+.CardContainer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(249, 115, 22, 0.13) 0%,
+    transparent 58%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 16px;
+}
+
+.CardContainer:hover::before {
+  opacity: 1;
+}
+
+/* Glowing top accent line */
+.CardContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.65), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.CardContainer:hover::after {
+  opacity: 1;
 }
 
 .CardImageWrapper {
   width: 100%;
   height: 200px;
   position: relative;
+  overflow: hidden;
+}
+
+.CardImageWrapper img {
+  transition: transform 0.65s ease !important;
+}
+
+.CardContainer:hover .CardImageWrapper img {
+  transform: scale(1.08) !important;
+}
+
+/* Subtle overlay on image */
+.CardImageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(9, 24, 41, 0.7) 100%
+  );
+  z-index: 1;
 }
 
 .CardContent {
-  padding: 16px;
+  padding: 22px 18px 20px;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .CardTitle {
-  font-size: 20px;
-  font-weight: bold;
-  margin: 8px 0;
-  color: #333333;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* Orange underline accent on title */
+.CardTitle::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--accent, #f97316);
+  margin: 8px auto 0;
+  border-radius: 2px;
+  transition: width 0.35s ease;
+}
+
+.CardContainer:hover .CardTitle::after {
+  width: 56px;
 }
 
 .CardDescription {
-  font-size: 16px;
-  color: #666666;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .CardContainer {
+    max-width: 100%;
+  }
 }
