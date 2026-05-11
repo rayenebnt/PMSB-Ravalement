@@ -132,6 +132,13 @@
 
 @media (max-width: 768px) {
   .CardContainer {
-    max-width: 100%;
+    width: calc(100% - 32px);
+    min-width: 0;
+    max-width: 480px;
+    flex: none;
+  }
+
+  .CardImageWrapper {
+    height: 200px;
   }
 }
