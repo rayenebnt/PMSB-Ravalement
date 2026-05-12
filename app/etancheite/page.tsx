@@ -16,17 +16,19 @@ export default function EtancheitePage() {
           <Navbar />
         </div>
         {/* Section d'introduction */}
-        <div className="full-screen-section">
-        
+        <section className="full-screen-section">
           <h1 className="main-title">Étanchéité</h1>
           <p className="main-text">
-            Notre équipe d'experts en étanchéité chez PMSB s'engage à vous offrir des solutions durables pour la rénovation de vos terrasses et balcons. Nous comprenons l'importance cruciale de maintenir l'intégrité de votre bâtiment en empêchant toute infiltration d'eau nuisible. <br />
-            <br />
-            Que votre complexe d'étanchéité soit devenu obsolète en raison de l'usure naturelle ou de dommages causés par des éléments extérieurs, nous avons l'expertise nécessaire pour identifier les problèmes sous-jacents et mettre en œuvre des systèmes modernes et efficaces qui garantissent une étanchéité optimale. <br />
-            <br />
-            Votre tranquillité d'esprit et la préservation de la valeur de votre propriété sont notre priorité, et nous sommes fiers de contribuer à la longévité et à la fonctionnalité de vos espaces extérieurs.
+            Notre équipe d'experts chez PMSB s'engage à vous offrir des solutions durables
+            pour la rénovation de vos terrasses et balcons, en empêchant toute infiltration
+            d'eau nuisible.
           </p>
-        </div>
+          <p className="main-text hero-extra">
+            Que votre complexe d'étanchéité soit devenu obsolète ou endommagé, nous avons
+            l'expertise pour mettre en œuvre des systèmes modernes garantissant une
+            étanchéité optimale. Votre tranquillité d'esprit est notre priorité.
+          </p>
+        </section>
 
         {/* Types d'étanchéité */}
         <section className="section">
