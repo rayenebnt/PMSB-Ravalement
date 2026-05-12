@@ -142,3 +142,18 @@
     height: 200px;
   }
 }
+
+@media (max-width: 480px) {
+  .CardContainer {
+    width: calc(100% - 24px);
+    border-radius: 12px;
+  }
+
+  .CardImageWrapper {
+    height: 180px;
+  }
+
+  .CardContent {
+    padding: 16px 14px;
+  }
+}

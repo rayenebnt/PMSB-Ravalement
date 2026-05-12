@@ -28,6 +28,17 @@
   }
 }
 
+@media (max-width: 480px) {
+  .CardContainer {
+    width: calc(100% - 24px);
+    border-radius: 10px;
+  }
+
+  .CardContent {
+    padding: 16px 14px;
+  }
+}
+
 .CardImageWrapper {
   width: 100%;
   position: relative;
