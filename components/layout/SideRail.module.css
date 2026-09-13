@@ -1,0 +1,60 @@
+.rails {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .rails {
+    display: block;
+  }
+}
+
+.rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: var(--rail);
+  z-index: 840;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  color: #8d8d8d;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+  flex-direction: column;
+}
+
+.text {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+}
+
+.left .text {
+  transform: rotate(180deg);
+}
+
+.track {
+  position: relative;
+  width: 1px;
+  height: 22vh;
+  background: rgba(140, 140, 140, 0.45);
+  overflow: hidden;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: #d6ff3d;
+  transform-origin: top;
+  transform: scaleY(var(--scroll-progress, 0));
+}

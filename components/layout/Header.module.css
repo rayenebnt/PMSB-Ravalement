@@ -1,0 +1,386 @@
+/* ══ Bandeau ══════════════════════════════════════════════════ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  transition: transform 0.55s var(--ease), background-color 0.5s var(--ease),
+    border-color 0.5s var(--ease), color 0.5s var(--ease);
+  background: rgba(239, 235, 227, 0.82);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--ink);
+}
+
+.header[data-over-hero="true"] {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-color: transparent;
+  color: var(--paper);
+}
+
+.header[data-open="true"] {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-color: transparent;
+  color: var(--paper);
+}
+
+.header[data-hidden="true"] {
+  transform: translateY(-100%);
+}
+
+.inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* ── Logo ── */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+}
+
+.logoMark {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.6s var(--ease);
+}
+
+.logo:hover .logoMark {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.logoMeta {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+@media (min-width: 700px) {
+  .logoMeta {
+    display: flex;
+  }
+}
+
+.logoName {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.logoSub {
+  font-size: 9px;
+  opacity: 0.55;
+  letter-spacing: 0.14em;
+}
+
+/* ── Liens bureau ── */
+
+.deskNav {
+  display: none;
+  align-items: center;
+  gap: clamp(18px, 2.4vw, 38px);
+}
+
+@media (min-width: 1080px) {
+  .deskNav {
+    display: flex;
+  }
+}
+
+.deskLink {
+  font-size: 11px;
+  opacity: 0.72;
+  transition: opacity 0.35s var(--ease);
+}
+
+.deskLink:hover,
+.deskLink[data-active="true"] {
+  opacity: 1;
+}
+
+.deskLink[data-active="true"]::after {
+  transform: scaleX(1);
+  background: var(--hiviz-deep);
+  height: 2px;
+}
+
+.header[data-over-hero="true"] .deskLink[data-active="true"]::after {
+  background: var(--hiviz);
+}
+
+/* ── Actions ── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 28px);
+  z-index: 2;
+}
+
+.phone {
+  display: none;
+  font-size: 11px;
+  opacity: 0.8;
+  transition: opacity 0.3s var(--ease);
+}
+
+.phone:hover {
+  opacity: 1;
+}
+
+@media (min-width: 620px) {
+  .phone {
+    display: inline-block;
+  }
+}
+
+.burger {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 18px 11px 15px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+  will-change: transform;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.burger:hover {
+  background: var(--hiviz);
+  color: var(--ink);
+  border-color: var(--hiviz);
+}
+
+.burgerLines {
+  display: grid;
+  gap: 5px;
+  width: 17px;
+}
+
+.burgerLines i {
+  display: block;
+  height: 1.5px;
+  width: 100%;
+  background: currentColor;
+  transition: transform 0.45s var(--ease);
+}
+
+.burgerLines[data-open="true"] i:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.burgerLines[data-open="true"] i:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+.burgerLabel {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ══ Menu plein écran ═════════════════════════════════════════ */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 880;
+  color: var(--paper);
+  pointer-events: none;
+}
+
+.overlay[data-open="true"] {
+  pointer-events: auto;
+}
+
+.panels {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.panels span {
+  background: var(--ink);
+  transform: translateY(-101%);
+  transition: transform 0.85s var(--ease-io);
+}
+
+.overlay[data-open="true"] .panels span {
+  transform: translateY(0);
+}
+
+.overlayInner {
+  position: relative;
+  height: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: calc(var(--header-h) + 24px) var(--gutter) clamp(28px, 5vh, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  overflow-y: auto;
+}
+
+/* ── Liste principale ── */
+
+.menuList {
+  list-style: none;
+  display: grid;
+  gap: clamp(2px, 0.6vh, 8px);
+  margin-top: auto;
+}
+
+.menuItem {
+  opacity: 0;
+  transform: translateY(46px);
+  transition: opacity 0.7s var(--ease), transform 0.9s var(--ease);
+  border-bottom: 1px solid rgba(239, 235, 227, 0.12);
+}
+
+.overlay[data-open="true"] .menuItem {
+  opacity: 1;
+  transform: none;
+}
+
+.menuLink {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(14px, 2.5vw, 40px);
+  padding-block: clamp(8px, 1.4vh, 18px);
+  transition: color 0.4s var(--ease);
+}
+
+.menuIndex {
+  font-size: 10px;
+  color: rgba(239, 235, 227, 0.4);
+  flex-shrink: 0;
+}
+
+.menuLabel {
+  font-size: clamp(2.3rem, 8.6vw, 7rem);
+  line-height: 0.92;
+  display: inline-block;
+  transition: transform 0.6s var(--ease), color 0.4s var(--ease);
+}
+
+.menuLink:hover .menuLabel {
+  transform: translateX(clamp(10px, 1.6vw, 26px));
+  color: var(--hiviz);
+}
+
+/* ── Pied du menu ── */
+
+.overlayFoot {
+  display: grid;
+  gap: clamp(22px, 3vw, 48px);
+  padding-top: clamp(18px, 3vh, 34px);
+  margin-top: clamp(18px, 3.5vh, 40px);
+  border-top: 1px solid rgba(239, 235, 227, 0.14);
+}
+
+@media (min-width: 780px) {
+  .overlayFoot {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.overlayCol {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s var(--ease), transform 0.8s var(--ease);
+}
+
+.overlay[data-open="true"] .overlayCol {
+  opacity: 1;
+  transform: none;
+}
+
+.overlayTag {
+  font-size: 10px;
+  color: rgba(239, 235, 227, 0.42);
+}
+
+.anchorList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+}
+
+.anchor {
+  font-size: 11px;
+  color: rgba(239, 235, 227, 0.85);
+}
+
+.overlayBig {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  align-self: flex-start;
+}
+
+.overlayAddr {
+  font-size: 10px;
+  color: rgba(239, 235, 227, 0.45);
+}
+
+/* ── Vignette flottante ── */
+
+.follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+}
+
+.followerInner {
+  width: clamp(180px, 20vw, 300px);
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.82) rotate(-4deg);
+  transition: opacity 0.45s var(--ease), transform 0.6s var(--ease);
+  background: var(--ink-3);
+}
+
+.followerInner[data-show="true"] {
+  opacity: 0.78;
+  transform: scale(1) rotate(-2deg);
+}
+
+.followerInner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.5) contrast(1.06);
+}
+
+@media (hover: none), (max-width: 860px) {
+  .follower {
+    display: none;
+  }
+}

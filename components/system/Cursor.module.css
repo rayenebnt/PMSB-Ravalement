@@ -1,0 +1,84 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.root[data-visible="true"] {
+  opacity: 1;
+}
+
+.dot,
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 999px;
+  will-change: transform;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: #f4f4f4;
+  transition: opacity 0.3s var(--ease), width 0.3s var(--ease),
+    height 0.3s var(--ease);
+}
+
+.dot[data-hidden="true"] {
+  opacity: 0;
+}
+
+.ring {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(244, 244, 244, 0.75);
+  transition: width 0.45s var(--ease), height 0.45s var(--ease),
+    background-color 0.45s var(--ease), border-color 0.45s var(--ease);
+}
+
+.ring[data-active="true"] {
+  width: 54px;
+  height: 54px;
+  border-color: rgba(244, 244, 244, 0.35);
+}
+
+.ring[data-labelled="true"] {
+  width: 96px;
+  height: 96px;
+  background: #f4f4f4;
+  border-color: transparent;
+}
+
+.label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0d0d10;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.3s var(--ease), transform 0.4s var(--ease);
+  text-align: center;
+  line-height: 1.2;
+  max-width: 80px;
+}
+
+.ring[data-labelled="true"] .label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Pas de curseur custom au doigt, ni en mouvement réduit */
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .root {
+    display: none;
+  }
+}

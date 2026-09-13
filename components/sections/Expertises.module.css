@@ -1,0 +1,98 @@
+.section {
+  background: var(--paper);
+}
+
+.rows {
+  display: grid;
+  gap: clamp(64px, 9vw, 150px);
+  margin-top: clamp(48px, 7vw, 100px);
+}
+
+.row {
+  display: grid;
+  gap: clamp(26px, 4vw, 64px);
+  align-items: center;
+}
+
+@media (min-width: 920px) {
+  .row {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  }
+
+  .row[data-flip="true"] .matter {
+    order: 2;
+  }
+}
+
+/* ── Échantillon ── */
+
+.matter {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.matterInner {
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, var(--paper-2), var(--paper));
+  padding: clamp(14px, 2vw, 26px);
+}
+
+.matterHint {
+  font-size: 9px;
+  color: var(--fg-faint);
+}
+
+/* ── Contenu ── */
+
+.content {
+  display: grid;
+  gap: clamp(14px, 1.8vw, 22px);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.number {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--hiviz);
+  padding: 5px 9px;
+  border-radius: 3px;
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 3.1rem);
+  line-height: 0.95;
+}
+
+.desc {
+  max-width: 52ch;
+}
+
+.photo {
+  aspect-ratio: 16 / 9;
+  margin-top: 6px;
+}
+
+.photo img {
+  filter: saturate(0.66) contrast(1.06);
+  transition: transform 1.4s var(--ease), filter 0.8s var(--ease);
+}
+
+.photo:hover img {
+  transform: scale(1.04);
+  filter: saturate(1) contrast(1.04);
+}

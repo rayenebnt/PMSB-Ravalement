@@ -1,0 +1,154 @@
+.hero {
+  position: relative;
+  min-height: min(92svh, 900px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  padding-bottom: clamp(36px, 6vh, 72px);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+      to bottom,
+      rgba(13, 13, 16, 0.78) 0%,
+      rgba(13, 13, 16, 0.26) 32%,
+      rgba(13, 13, 16, 0.8) 74%,
+      rgba(13, 13, 16, 0.97) 100%
+    );
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-top: calc(var(--header-h) + clamp(60px, 16vh, 160px));
+  display: grid;
+  gap: clamp(22px, 3.4vw, 44px);
+}
+
+/* ── Fil d'ariane ── */
+
+.crumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+}
+
+.crumbLink {
+  color: rgba(239, 235, 227, 0.6);
+}
+
+.crumbSep {
+  color: rgba(239, 235, 227, 0.3);
+}
+
+.crumbCurrent {
+  color: var(--hiviz);
+}
+
+/* ── Titre ── */
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(10px, 2vw, 30px);
+}
+
+.index {
+  padding-top: 0.6em;
+  font-size: 10px;
+  color: rgba(239, 235, 227, 0.4);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: clamp(2.9rem, 10vw, 9rem);
+  line-height: 0.84;
+  color: var(--paper);
+}
+
+/* ── Corps ── */
+
+.body {
+  display: grid;
+  gap: clamp(24px, 4vw, 56px);
+  padding-top: clamp(18px, 2.6vw, 34px);
+  border-top: 1px solid rgba(239, 235, 227, 0.16);
+}
+
+@media (min-width: 940px) {
+  .body {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    align-items: start;
+  }
+}
+
+.paragraphs {
+  display: grid;
+  gap: 14px;
+  max-width: 62ch;
+}
+
+.para {
+  color: rgba(239, 235, 227, 0.68);
+  font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+}
+
+.markers {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  align-content: flex-start;
+}
+
+@media (min-width: 940px) {
+  .markers {
+    flex-direction: column;
+    gap: 10px;
+    justify-self: end;
+    text-align: right;
+  }
+}
+
+.markers li {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 9px;
+  color: rgba(239, 235, 227, 0.55);
+}
+
+@media (min-width: 940px) {
+  .markers li {
+    flex-direction: row-reverse;
+  }
+}
+
+.markers i {
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--hiviz);
+  flex-shrink: 0;
+}
+
+.sentinel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}

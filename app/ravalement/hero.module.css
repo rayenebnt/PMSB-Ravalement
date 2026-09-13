@@ -1,0 +1,17 @@
+.object {
+  position: absolute;
+  right: clamp(-40px, 1vw, 40px);
+  top: 50%;
+  width: clamp(280px, 36vw, 560px);
+  transform: translateY(-52%);
+  opacity: 0.95;
+  pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+  .object {
+    right: -18%;
+    width: 72vw;
+    opacity: 0.42;
+  }
+}

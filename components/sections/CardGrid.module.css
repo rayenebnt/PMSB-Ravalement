@@ -1,0 +1,82 @@
+.section {
+  background: var(--bg);
+}
+
+.grid {
+  margin-top: clamp(44px, 6vw, 88px);
+  display: grid;
+  gap: clamp(22px, 3vw, 40px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+@media (min-width: 1100px) {
+  .section[data-columns="4"] .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .section[data-columns="3"] .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.media {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+}
+
+.media img {
+  filter: saturate(0.62) contrast(1.06);
+  transform: scale(1.03);
+  transition: transform 1.3s var(--ease), filter 0.8s var(--ease);
+}
+
+.card:hover .media img {
+  transform: scale(1.09);
+  filter: saturate(1) contrast(1.03);
+}
+
+.badge {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--hiviz);
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.body {
+  display: grid;
+  gap: 10px;
+}
+
+.title {
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.15;
+}
+
+/* Les descriptions s'alignent même quand un titre passe sur deux lignes */
+@media (min-width: 1100px) {
+  .title {
+    min-height: 2.3em;
+  }
+}
+
+.desc {
+  font-size: 0.92rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transform: none !important;
+  }
+}

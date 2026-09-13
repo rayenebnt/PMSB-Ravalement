@@ -1,30 +1,477 @@
+/* ══════════════════════════════════════════════════════════════
+   PMSB — Design system
+   Concept : « Le bâti vivant ». Une grille d'architecte, une
+   typographie éditoriale massive, la pierre de Paris en fond
+   et un accent de signalisation de chantier.
+   ══════════════════════════════════════════════════════════════ */
+
 :root {
-  --accent:        #f97316;
-  --accent-light:  #fb923c;
-  --accent-dim:    rgba(249, 115, 22, 0.20);
-  --accent-glow:   0 0 40px rgba(249, 115, 22, 0.45);
+  /* ── Matière ── */
+  --paper: #efebe3; /* chaux */
+  --paper-2: #e6e1d7;
+  --paper-3: #dbd4c6;
+  --sand: #c6bba7;
 
-  --bg-deep:   #06080f;
-  --bg-dark:   #080b14;
-  --bg-mid:    #0b1020;
-  --bg-card:   #0e1628;
+  --ink: #0d0d10; /* graphite */
+  --ink-2: #16161b;
+  --ink-3: #22222a;
+  --ink-4: #33333d;
 
-  --text:      #ffffff;
-  --text-muted: rgba(255, 255, 255, 0.58);
-  --text-dim:   rgba(255, 255, 255, 0.35);
+  --hiviz: #d6ff3d; /* signalisation */
+  --hiviz-deep: #b4e000;
+  --rust: #d4400f; /* brique */
 
-  --radius: 14px;
-  --ease:   cubic-bezier(0.16, 1, 0.3, 1);
+  /* ── Rôles (thème clair par défaut) ── */
+  --bg: var(--paper);
+  --bg-alt: var(--paper-2);
+  --fg: var(--ink);
+  --fg-mute: rgba(13, 13, 16, 0.58);
+  --fg-faint: rgba(13, 13, 16, 0.34);
+  --line: rgba(13, 13, 16, 0.14);
+  --line-soft: rgba(13, 13, 16, 0.08);
+
+  /* ── Métrique ── */
+  --gutter: clamp(20px, 5vw, 88px);
+  --rail: 46px;
+  --maxw: 1560px;
+  --header-h: 78px;
+
+  /* ── Mouvement ── */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-io: cubic-bezier(0.76, 0, 0.24, 1);
+  --dur: 0.72s;
+
+  color-scheme: light;
 }
 
-html { scroll-behavior: smooth; }
+/* Chapitres sombres : on inverse les rôles, la matière ne change pas */
+.on-dark {
+  --bg: var(--ink);
+  --bg-alt: var(--ink-2);
+  --fg: var(--paper);
+  --fg-mute: rgba(239, 235, 227, 0.6);
+  --fg-faint: rgba(239, 235, 227, 0.32);
+  --line: rgba(239, 235, 227, 0.16);
+  --line-soft: rgba(239, 235, 227, 0.08);
+  background: var(--bg);
+  color: var(--fg);
+}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── Reset ───────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
-  background-color: var(--bg-deep);
-  font-family: 'Inter', -apple-system, sans-serif;
-  color: var(--text);
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body), "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+}
+
+/* Lenis pilote le scroll : pas de smooth natif concurrent */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--hiviz);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--hiviz-deep);
+  outline-offset: 3px;
+}
+
+/* ── Typographie ─────────────────────────────────────────────── */
+
+.display {
+  font-family: var(--font-display), "Archivo", system-ui, sans-serif;
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.mono {
+  font-family: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.h-xxl {
+  font-size: clamp(3.1rem, 13vw, 12rem);
+}
+.h-xl {
+  font-size: clamp(2.6rem, 8.2vw, 7.2rem);
+}
+.h-lg {
+  font-size: clamp(2.1rem, 5.4vw, 4.6rem);
+}
+.h-md {
+  font-size: clamp(1.55rem, 3.1vw, 2.5rem);
+  line-height: 0.98;
+}
+
+.lede {
+  font-size: clamp(1.02rem, 1.5vw, 1.38rem);
+  line-height: 1.52;
+  color: var(--fg-mute);
+  text-wrap: pretty;
+}
+
+.body-text {
+  font-size: clamp(0.95rem, 1.05vw, 1.06rem);
+  line-height: 1.7;
+  color: var(--fg-mute);
+  text-wrap: pretty;
+}
+
+/* ── Grille ──────────────────────────────────────────────────── */
+
+.shell {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(84px, 11vw, 180px);
+}
+
+.section-tight {
+  padding-block: clamp(56px, 7vw, 110px);
+}
+
+/* ── Étiquette technique ─────────────────────────────────────── */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg-mute);
+}
+
+.tag::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: var(--hiviz-deep);
+}
+
+.on-dark .tag::before {
+  background: var(--hiviz);
+}
+
+/* ── Filet de règle graduée ──────────────────────────────────── */
+
+.rule {
+  position: relative;
+  height: 1px;
+  width: 100%;
+  background: var(--line);
+}
+
+.rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--line) 0 1px,
+    transparent 1px 40px
+  );
+  height: 6px;
+  top: 0;
+}
+
+/* ── Boutons ─────────────────────────────────────────────────── */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 30px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.45s var(--ease), border-color 0.45s var(--ease);
+  will-change: transform;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  transform: translateY(0);
+  transition: transform 0.55s var(--ease);
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--hiviz);
+  transform: translateY(101%);
+  transition: transform 0.55s var(--ease);
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  transform: translateY(0);
+}
+
+.btn-solid {
+  color: var(--paper);
+}
+.btn-solid::before {
+  background: var(--ink);
+}
+.btn-solid:hover,
+.btn-solid:focus-visible {
+  color: var(--ink);
+}
+
+.on-dark .btn-solid {
+  color: var(--ink);
+}
+.on-dark .btn-solid::before {
+  background: var(--paper);
+}
+
+.btn-ghost {
+  color: var(--fg);
+  border-color: var(--line);
+}
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  color: var(--ink);
+  border-color: transparent;
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.45s var(--ease);
+}
+.btn:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+/* ── Lien souligné à balayage ────────────────────────────────── */
+
+.swipe-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.swipe-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease);
+}
+
+.swipe-link:hover::after,
+.swipe-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Révélations au scroll ───────────────────────────────────── */
+
+[data-reveal] {
+  --reveal-delay: 0ms;
+}
+
+[data-reveal="up"] {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  transition: opacity 0.9s var(--ease) var(--reveal-delay),
+    transform 0.9s var(--ease) var(--reveal-delay);
+}
+
+[data-reveal="fade"] {
+  opacity: 0;
+  transition: opacity 1.1s var(--ease) var(--reveal-delay);
+}
+
+/*
+ * Révélation « rideau ». Un clip-path qui réduit la boîte à zéro
+ * empêche Chromium de signaler l'élément à l'IntersectionObserver :
+ * on masque donc avec un panneau qui coulisse, pas avec un clip.
+ */
+[data-reveal="clip"] {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-reveal="clip"]::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  background: var(--bg);
+  transform: translateY(0);
+  transition: transform 1.15s var(--ease-io) var(--reveal-delay);
+}
+
+[data-reveal="clip"].is-in::after {
+  transform: translateY(101%);
+}
+
+[data-reveal="scale"] {
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 1s var(--ease) var(--reveal-delay),
+    transform 1.3s var(--ease) var(--reveal-delay);
+}
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Masque ligne à ligne (SplitText) */
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+
+.split-line > span {
+  display: block;
+  transform: translate3d(0, 105%, 0);
+  transition: transform 1s var(--ease);
+  transition-delay: var(--line-delay, 0ms);
+}
+
+.is-in .split-line > span,
+.split-line.is-in > span {
+  transform: translate3d(0, 0, 0);
+}
+
+/* ── Images ──────────────────────────────────────────────────── */
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-3);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame-parallax img {
+  will-change: transform;
+}
+
+/* ── Divers ──────────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* ── Accessibilité : mouvement réduit ────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-reveal="clip"]::after {
+    display: none;
+  }
+
+  .split-line > span {
+    transform: none !important;
+  }
 }

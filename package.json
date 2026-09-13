@@ -1,7 +1,8 @@
 {
-  "name": "pmsb2",
+  "name": "pmsb",
   "version": "0.1.0",
   "private": true,
+  "description": "Site vitrine PMSB — ravalement de façade, isolation thermique et étanchéité en Île-de-France.",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
@@ -16,27 +17,15 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
-    "leaflet": "^1.9.4",
+    "lenis": "^1.3.26",
     "next": "^13.4.4",
-    "npm-watch": "^0.13.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-leaflet": "^4.2.1",
-    "react-scroll": "^1.8.9",
-    "react-server-components": "^0.0.0",
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1",
-    "styled-components": "^6.1.14",
-    "tailwindcss": "3.3.2",
+    "three": "^0.186.0",
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@swc/core": "^1.10.7",
-    "@swc/helpers": "^0.5.15",
-    "@types/react-slick": "^0.23.10",
-    "babel-plugin-styled-components": "^2.1.4",
-    "browser-sync": "^3.0.3",
-    "gh-pages": "^6.0.0"
+    "@types/three": "^0.186.0"
   }
 }

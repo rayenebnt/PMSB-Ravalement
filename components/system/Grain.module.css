@@ -1,0 +1,47 @@
+.grain {
+  position: fixed;
+  inset: -140px;
+  z-index: 9997;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-repeat: repeat;
+  animation: drift 0.9s steps(1) infinite;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  12% {
+    transform: translate3d(-14px, 8px, 0);
+  }
+  25% {
+    transform: translate3d(9px, -12px, 0);
+  }
+  37% {
+    transform: translate3d(-7px, -9px, 0);
+  }
+  50% {
+    transform: translate3d(13px, 6px, 0);
+  }
+  62% {
+    transform: translate3d(-11px, 11px, 0);
+  }
+  75% {
+    transform: translate3d(6px, -14px, 0);
+  }
+  87% {
+    transform: translate3d(-9px, 4px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+    opacity: 0.32;
+  }
+}

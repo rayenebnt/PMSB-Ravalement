@@ -1,0 +1,33 @@
+.sample {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    58% 58% at 50% 46%,
+    rgba(13, 13, 16, 0.075),
+    transparent 72%
+  );
+}
+
+:global(.on-dark) .sample {
+  background: radial-gradient(
+    58% 58% at 50% 46%,
+    rgba(214, 255, 61, 0.075),
+    transparent 72%
+  );
+}
+
+.sample canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 9px;
+  color: var(--fg-faint);
+}

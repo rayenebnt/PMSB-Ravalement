@@ -1,0 +1,174 @@
+.footer {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(80px, 10vw, 160px);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: clamp(56px, 8vw, 120px);
+}
+
+/* ── Appel ── */
+
+.callout {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+}
+
+.tag {
+  color: var(--fg-mute);
+}
+
+.title {
+  max-width: 16ch;
+}
+
+.contactLinks {
+  display: grid;
+  gap: clamp(16px, 2vw, 28px);
+  margin-top: clamp(10px, 2vw, 26px);
+}
+
+@media (min-width: 760px) {
+  .contactLinks {
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    gap: clamp(30px, 6vw, 90px);
+  }
+}
+
+.bigLink {
+  display: grid;
+  gap: 8px;
+  will-change: transform;
+}
+
+.bigLinkTag {
+  font-size: 10px;
+  color: var(--fg-faint);
+}
+
+.bigLinkValue {
+  position: relative;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 3vw, 2.3rem);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  word-break: break-word;
+  background-image: linear-gradient(var(--hiviz), var(--hiviz));
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  transition: background-size 0.55s var(--ease), color 0.4s var(--ease);
+}
+
+.bigLink:hover .bigLinkValue {
+  background-size: 100% 2px;
+  color: var(--hiviz);
+}
+
+/* ── Colonnes ── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(30px, 4vw, 54px);
+  padding-top: clamp(34px, 4vw, 56px);
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.colTitle {
+  font-size: 10px;
+  color: var(--fg-faint);
+  font-weight: 600;
+}
+
+.colLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.95rem;
+}
+
+.colList {
+  list-style: none;
+  display: grid;
+  gap: 9px;
+  font-size: 0.95rem;
+  color: var(--fg-mute);
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.95rem;
+  align-self: flex-start;
+  transition: color 0.4s var(--ease);
+}
+
+.social:hover {
+  color: var(--hiviz);
+}
+
+.label {
+  width: 132px;
+  height: auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 3px;
+  align-self: flex-start;
+}
+
+/* ── Signature ── */
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-block: 26px clamp(120px, 18vw, 240px);
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  color: var(--fg-faint);
+}
+
+.legal {
+  color: var(--fg-faint);
+}
+
+/* ── Lettrage de fond ── */
+
+.watermark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2.2vw;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  line-height: 0.72;
+}
+
+.watermark span {
+  font-size: clamp(7rem, 29vw, 30rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(239, 235, 227, 0.14);
+  letter-spacing: -0.04em;
+}

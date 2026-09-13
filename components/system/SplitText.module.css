@@ -1,0 +1,44 @@
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.wrap {
+  display: block;
+}
+
+.mask {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-top: 0.24em;
+  margin-top: -0.24em;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  margin-right: 0.25em;
+}
+
+.mask:last-child {
+  margin-right: 0;
+}
+
+.word {
+  display: inline-block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1s var(--ease);
+  will-change: transform;
+}
+
+:global(.is-in) .word {
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    transform: none;
+  }
+}

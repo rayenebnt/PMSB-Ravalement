@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PMSB — site vitrine
 
-## Getting Started
+Site de **PMSB (Prestations Multi Services Bâtiment)** : ravalement de façade,
+isolation thermique par l'extérieur, étanchéité et rénovation en Île-de-France.
 
-First, run the development server:
+Next.js (App Router), TypeScript, CSS Modules et Three.js.
+
+## Démarrer
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # build de production
+npm start       # sert le build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+app/                  Routes : /, /ravalement, /isolation, /etancheite
+  globals.css         Design system (couleurs, typographie, révélations)
+components/
+  layout/             Header, Footer, couverture de page, montants latéraux
+  sections/           Blocs de contenu réutilisables
+  system/             Primitives : défilement, curseur, grain, compteurs…
+  webgl/              Scènes Three.js et shaders
+lib/
+  site.ts             Tout le contenu rédactionnel, en un seul endroit
+  webgl.ts            Montage des scènes : rendu, redimensionnement, pause
+  utils.ts            Interpolations et aléatoire déterministe
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contenu
 
-## Learn More
+Les textes, coordonnées et visuels sont centralisés dans `lib/site.ts`.
+Modifier ce fichier suffit à mettre le site à jour — aucune chaîne n'est
+écrite en dur dans les composants.
 
-To learn more about Next.js, take a look at the following resources:
+## Les scènes 3D
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Cinq scènes WebGL, toutes écrites à la main (aucun modèle importé) :
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Scène | Où | Principe |
+| --- | --- | --- |
+| `StoneWall` | Accueil | Façade en pierre de taille instanciée ; l'appareil se monte assise par assise, le curseur « ravale » la pierre encrassée |
+| `Gallery3D` | Accueil | Galerie de réalisations sur plans courbes, glissable, avec franges chromatiques liées à la vitesse |
+| `GridField` | Chapitres sombres | Trame d'implantation en perspective, tracée dans le fragment shader |
+| `MaterialCanvas` | Ravalement | Bloc de matière en lancer de rayons : pierre, brique, plâtre et imperméabilisation entièrement procéduraux |
+| `ThermalFacade` / `ThermalWall` | Isolation | Thermographie interactive, puis coupe de mur animée avec particules de déperdition |
+| `WaterSurface` | Étanchéité | Membrane satinée sous la pluie, ondes analytiques réagissant au curseur |
 
-## Deploy on Vercel
+Chaque scène est montée via `lib/webgl.ts`, qui met la boucle de rendu en
+pause hors du viewport et quand l'onglet est masqué, et libère toutes les
+ressources au démontage. Les scènes sont chargées en `next/dynamic` sans
+rendu serveur : sans WebGL, la page reste complète et lisible.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Accessibilité et performance
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `prefers-reduced-motion` désactive le préchargeur, le défilement inertiel,
+  les révélations, les bandeaux défilants et les gouttes de pluie.
+- Tous les textes restent dans le flux HTML : les animations ne portent que
+  sur la présentation.
+- Les scènes 3D sont décoratives ou illustratives et marquées `aria-hidden`
+  lorsqu'elles n'apportent pas d'information textuelle.

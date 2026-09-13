@@ -1,0 +1,89 @@
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+}
+
+@media (min-width: 940px) {
+  .inner {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  }
+}
+
+.text {
+  display: grid;
+  gap: clamp(16px, 2.2vw, 28px);
+  justify-items: start;
+}
+
+.badge {
+  color: var(--fg-mute);
+}
+
+.title {
+  max-width: 14ch;
+}
+
+.desc {
+  max-width: 58ch;
+}
+
+.desc strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  gap: 0;
+  width: 100%;
+  border-top: 1px solid var(--line);
+}
+
+.list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-block: 15px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+  color: var(--fg-mute);
+}
+
+.tick {
+  margin-top: 0.5em;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: var(--hiviz);
+  transform: rotate(45deg);
+}
+
+/* ── Logo ── */
+
+.logoCol {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.logoFrame {
+  width: 100%;
+  max-width: 380px;
+  padding: clamp(22px, 3vw, 40px);
+  background: var(--paper);
+  border-radius: 3px;
+  box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.8);
+}
+
+.logoNote {
+  font-size: 9px;
+  color: var(--fg-faint);
+  text-align: center;
+}
