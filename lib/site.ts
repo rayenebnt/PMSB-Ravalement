@@ -14,7 +14,7 @@ export const company = {
   emailHref: "mailto:pmsb.pmsb@yahoo.fr",
   address: "94380 Bonneuil-Sur-Marne",
   linkedin: "https://www.linkedin.com/in/sarl-pmsb-740726280/",
-  copyright: "© Copyright 2023 PMSB",
+  copyright: "© Copyright 2026 PMSB",
 };
 
 export const nav = [
