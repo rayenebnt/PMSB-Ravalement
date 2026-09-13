@@ -62,3 +62,17 @@ rendu serveur : sans WebGL, la page reste complète et lisible.
   sur la présentation.
 - Les scènes 3D sont décoratives ou illustratives et marquées `aria-hidden`
   lorsqu'elles n'apportent pas d'information textuelle.
+
+## Note d'implémentation
+
+Un composant client monté par une Server Component devient un *point
+d'entrée client* : Next lui associe une entrée de manifeste et un chunk.
+Si ce même module exporte aussi un utilitaire importé par d'autres
+composants clients, il se retrouve dupliqué dans un chunk asynchrone qui
+peut s'exécuter avant ses dépendances — l'hydratation échoue alors par
+intermittence.
+
+C'est pourquoi le signal de fin de préchargement vit dans
+`components/system/siteReady.ts` et non dans `Preloader.tsx` : le
+composant reste un point d'entrée pur, le hook une dépendance partagée.
+Garder cette séparation en ajoutant de nouveaux composants clients.

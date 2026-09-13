@@ -2,30 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { prefersReducedMotion } from "@/lib/utils";
+import { markReady } from "./siteReady";
 import s from "./Preloader.module.css";
-
-export const READY_EVENT = "pmsb:ready";
-
-/** Marque le site comme prêt et prévient les scènes qui attendent. */
-function markReady() {
-  document.documentElement.dataset.loaded = "true";
-  window.dispatchEvent(new Event(READY_EVENT));
-}
-
-/** true dès que le préchargement est terminé. */
-export function useSiteReady() {
-  const [ready, setReady] = useState(false);
-  useEffect(() => {
-    if (document.documentElement.dataset.loaded === "true") {
-      setReady(true);
-      return;
-    }
-    const on = () => setReady(true);
-    window.addEventListener(READY_EVENT, on);
-    return () => window.removeEventListener(READY_EVENT, on);
-  }, []);
-  return ready;
-}
 
 const COLUMNS = 6;
 

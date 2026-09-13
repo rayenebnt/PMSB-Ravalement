@@ -46,7 +46,9 @@ export function webglAvailable(): boolean {
 
 /**
  * Monte une scène Three.js sur un canvas :
- * - crée le renderer et gère le redimensionnement
+ * - ne crée le contexte qu'à l'approche du viewport, pour n'avoir jamais
+ *   plus de contextes WebGL vivants que la page n'en montre
+ * - gère le redimensionnement et la perte de contexte
  * - met la boucle en pause hors viewport ou onglet caché
  * - calcule la progression au scroll et la position lissée du curseur
  * Retourne la fonction de démontage.
@@ -55,6 +57,35 @@ export function mountScene(
   canvas: HTMLCanvasElement,
   build: (ctx: SceneContext) => SceneHandlers,
   opts: MountOptions = {}
+): () => void {
+  const host = (canvas.parentElement as HTMLElement) ?? canvas;
+
+  let teardown: (() => void) | null = null;
+  let started = false;
+
+  // Le contexte n'est créé qu'une fois la scène sur le point d'être vue
+  const armer = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry.isIntersecting || started) return;
+      started = true;
+      armer.disconnect();
+      teardown = startScene(canvas, host, build, opts);
+    },
+    { rootMargin: "500px 0px" }
+  );
+  armer.observe(host);
+
+  return () => {
+    armer.disconnect();
+    teardown?.();
+  };
+}
+
+function startScene(
+  canvas: HTMLCanvasElement,
+  host: HTMLElement,
+  build: (ctx: SceneContext) => SceneHandlers,
+  opts: MountOptions
 ): () => void {
   const { alpha = true, dprMax = 1.75, antialias = true, globalPointer = false } = opts;
 
@@ -70,7 +101,6 @@ export function mountScene(
     return () => {};
   }
 
-  const host = (canvas.parentElement as HTMLElement) ?? canvas;
   const reduced = prefersReducedMotion();
 
   const dpr = Math.min(window.devicePixelRatio || 1, dprMax);
@@ -136,6 +166,17 @@ export function mountScene(
   };
   document.addEventListener("visibilitychange", onVisibility);
 
+  /* ── Perte de contexte ─────────────────────────────────────── */
+  // Le navigateur peut reprendre un contexte WebGL sous pression
+  // mémoire : on arrête proprement plutôt que de laisser la scène
+  // lever une erreur au milieu d'une frame.
+  let lost = false;
+  const onLost = (e: Event) => {
+    e.preventDefault();
+    lost = true;
+  };
+  canvas.addEventListener("webglcontextlost", onLost);
+
   /* ── Boucle ────────────────────────────────────────────────── */
   let raf = 0;
   let last = performance.now();
@@ -146,7 +187,7 @@ export function mountScene(
     const now = performance.now();
     const dt = Math.min((now - last) / 1000, 1 / 24);
     last = now;
-    if (!onScreen || !tabVisible) return;
+    if (lost || !onScreen || !tabVisible) return;
 
     const rect = host.getBoundingClientRect();
     const vh = window.innerHeight || 1;
@@ -156,7 +197,12 @@ export function mountScene(
     pointer.x += (pointerTarget.x - pointer.x) * k;
     pointer.y += (pointerTarget.y - pointer.y) * k;
 
-    handlers.frame((now - start) / 1000, dt, p, pointer);
+    try {
+      handlers.frame((now - start) / 1000, dt, p, pointer);
+    } catch {
+      // Une frame qui échoue ne doit jamais emporter la page avec elle
+      lost = true;
+    }
   };
   raf = requestAnimationFrame(loop);
 
@@ -166,6 +212,7 @@ export function mountScene(
     ro.disconnect();
     io.disconnect();
     document.removeEventListener("visibilitychange", onVisibility);
+    canvas.removeEventListener("webglcontextlost", onLost);
     pointerHost.removeEventListener("pointermove", onPointerMove as EventListener);
     handlers.dispose?.();
     renderer.dispose();

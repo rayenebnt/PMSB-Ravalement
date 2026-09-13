@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { mountScene, webglAvailable } from "@/lib/webgl";
 import { clamp, makeRandom, mapRange } from "@/lib/utils";
-import { useSiteReady } from "../system/Preloader";
+import { useSiteReady } from "../system/siteReady";
 import s from "./StoneWall.module.css";
 
 /* ══════════════════════════════════════════════════════════════
