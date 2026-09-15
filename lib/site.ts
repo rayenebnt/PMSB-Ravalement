@@ -172,11 +172,28 @@ export const realisationsPage = {
   title: "Réalisations",
   introParagraphs: [
     "Chaque chantier laisse une trace : un pignon repris, une façade parisienne retrouvée, une façade en brique entièrement réhabillée. Voici une sélection de nos interventions en région parisienne.",
-    "Lorsque les photos d'avant travaux existent, faites glisser la poignée au centre de l'image pour découvrir le résultat.",
+    "Les chantiers photographiés avant et après les travaux sont regroupés en tête de page ; les autres suivent, à l'état livré.",
   ],
   markers: ["Avant / après comparables", "Chantiers livrés", "Région parisienne"],
-  /** Mode d'emploi du comparateur, affiché au-dessus de la liste. */
-  hint: "Glissez la poignée pour comparer l'avant et l'après.",
+
+  /** Chantiers dont on a les deux états. */
+  compare: {
+    index: "01",
+    tag: "Avant / Après",
+    title: "Le même mur, avant et après",
+    lede:
+      "Ces chantiers ont été photographiés aux deux étapes. Glissez la poignée sur l'image pour passer de l'état d'origine au résultat.",
+    hint: "Glissez la poignée pour comparer l'avant et l'après.",
+  },
+
+  /** Chantiers dont seul le résultat a été photographié. */
+  results: {
+    index: "02",
+    tag: "Résultats",
+    title: "Chantiers livrés",
+    lede:
+      "Façades terminées, photographiées à la réception des travaux.",
+  },
 };
 
 /* ── Page Ravalement ─────────────────────────────────────────── */

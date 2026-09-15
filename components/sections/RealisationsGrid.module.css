@@ -6,6 +6,11 @@
   background: var(--bg);
 }
 
+/* Les résultats se détachent de la section précédente d'un demi-ton */
+.section[data-tone="alt"] {
+  background: var(--bg-alt);
+}
+
 /* ── Mode d'emploi du comparateur ── */
 
 .hint {
