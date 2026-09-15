@@ -163,7 +163,7 @@ export default function Gallery3D() {
         const loader = new THREE.TextureLoader();
 
         const meshes = realisations.map((item, i) => {
-          const texture = loader.load(item.image, (tex) => {
+          const texture = loader.load(item.after, (tex) => {
             tex.colorSpace = THREE.SRGBColorSpace;
             const img = tex.image as HTMLImageElement;
             if (img?.width) {
@@ -276,12 +276,13 @@ export default function Gallery3D() {
         <div className={s.captionWrap}>
           {realisations.map((item, i) => (
             <p
-              key={item.text}
+              key={item.slug}
               className={s.caption}
               data-active={i === active}
               aria-hidden={i !== active}
             >
-              {item.text}
+              {item.title}
+              {item.place && <span className={s.captionPlace}>{item.place}</span>}
             </p>
           ))}
         </div>
@@ -289,13 +290,13 @@ export default function Gallery3D() {
         <div className={s.dots}>
           {realisations.map((item, i) => (
             <button
-              key={item.place}
+              key={item.slug}
               type="button"
               className={s.dot}
               data-active={i === active}
               onClick={() => goTo(i)}
             >
-              <span className="sr-only">Voir : {item.text}</span>
+              <span className="sr-only">Voir : {item.title}</span>
               <span className="mono">{String(i + 1).padStart(2, "0")}</span>
               <i />
             </button>

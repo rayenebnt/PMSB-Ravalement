@@ -17,7 +17,8 @@ npm start       # sert le build
 ## Structure
 
 ```
-app/                  Routes : /, /ravalement, /isolation, /etancheite
+app/                  Routes : /, /ravalement, /isolation, /etancheite,
+                      /realisations
   globals.css         Design system (couleurs, typographie, révélations)
 components/
   layout/             Header, Footer, couverture de page, montants latéraux
@@ -28,6 +29,8 @@ lib/
   site.ts             Tout le contenu rédactionnel, en un seul endroit
   webgl.ts            Montage des scènes : rendu, redimensionnement, pause
   utils.ts            Interpolations et aléatoire déterministe
+public/
+  realisations/       Photos de chantier (voir ci-dessous)
 ```
 
 ## Contenu
@@ -35,6 +38,35 @@ lib/
 Les textes, coordonnées et visuels sont centralisés dans `lib/site.ts`.
 Modifier ce fichier suffit à mettre le site à jour — aucune chaîne n'est
 écrite en dur dans les composants.
+
+## Ajouter une réalisation
+
+Les chantiers vivent dans le tableau `realisations` de `lib/site.ts`. Une
+entrée suffit à alimenter les trois endroits où ils apparaissent : la
+galerie 3D de l'accueil, la page `/realisations` et le compteur du renvoi.
+
+```ts
+{
+  slug: "bardage",                     // clé de rendu et ancre : /realisations#bardage
+  title: "Travaux de bardages",
+  category: "Bardage",                 // pastille
+  place: "Paris 75002",                // facultatif
+  description: "…",
+  before: "/realisations/bardage-avant.jpg",   // facultatif
+  after: "/realisations/bardage-apres.jpg",    // obligatoire
+}
+```
+
+`before` renseigné, la fiche devient un comparateur avant / après —
+glissement à la souris, au doigt ou aux flèches du clavier. `before`
+absent, la fiche montre le seul résultat. Rien d'autre à toucher :
+la grille place les comparateurs sur la largeur entière et élargit
+la dernière fiche quand elle resterait seule sur sa ligne.
+
+Les photos vont dans `public/realisations/`, nommées `<slug>-avant.jpg`
+et `<slug>-apres.jpg`. JPEG, 1600 px sur le grand côté, qualité 80. Les
+deux photos d'une même paire gagnent à être cadrées pareil : le
+comparateur les superpose dans un cadre unique, en `object-fit: cover`.
 
 ## Les scènes 3D
 

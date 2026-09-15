@@ -1,0 +1,196 @@
+/* ══════════════════════════════════════════════════════════════
+   Liste des chantiers
+   ══════════════════════════════════════════════════════════════ */
+
+.section {
+  background: var(--bg);
+}
+
+/* ── Mode d'emploi du comparateur ── */
+
+.hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: clamp(28px, 4vw, 48px);
+  padding: 9px 16px 9px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 10px;
+  color: var(--fg-mute);
+}
+
+.hintIcon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--hiviz);
+  flex-shrink: 0;
+}
+
+/* ── Grille ── */
+
+.grid {
+  margin-top: clamp(28px, 4vw, 52px);
+  display: grid;
+  gap: clamp(48px, 6vw, 96px) clamp(24px, 3vw, 44px);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card[data-wide="true"] {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Fiche ── */
+
+.card {
+  display: grid;
+  gap: clamp(18px, 2vw, 28px);
+  align-content: start;
+}
+
+.media {
+  position: relative;
+}
+
+/* Cadres : le comparateur et la photo simple partagent la même boîte */
+.media > * {
+  aspect-ratio: 4 / 5;
+}
+
+@media (min-width: 620px) {
+  .media > * {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (min-width: 900px) {
+  .card[data-wide="true"] .media > * {
+    aspect-ratio: 16 / 9;
+    max-height: 76svh;
+  }
+}
+
+/* ── Photo seule ── */
+
+.single {
+  border: 1px solid var(--line);
+}
+
+.single img {
+  transform: scale(1.02);
+  filter: saturate(0.78) contrast(1.04);
+  transition: transform 1.3s var(--ease), filter 0.8s var(--ease);
+}
+
+.card:hover .single img {
+  transform: scale(1.07);
+  filter: saturate(1) contrast(1.02);
+}
+
+.resultChip {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  font-size: 9px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--hiviz);
+}
+
+/* ── Légende ── */
+
+.info {
+  display: grid;
+  gap: 12px;
+  max-width: 62ch;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.number {
+  font-size: 10px;
+  color: var(--fg-faint);
+}
+
+.category,
+.place {
+  font-size: 9px;
+  color: var(--fg-mute);
+}
+
+.place::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border-radius: 999px;
+  background: var(--hiviz-deep);
+}
+
+.compare {
+  font-size: 9px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--hiviz);
+}
+
+.title {
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  line-height: 1.02;
+}
+
+.card[data-wide="true"] .title {
+  font-size: clamp(1.6rem, 3.4vw, 3rem);
+}
+
+/* Deux fiches côte à côte : les descriptions démarrent à la même hauteur,
+   qu'un titre tienne sur une ligne ou sur deux. */
+@media (min-width: 900px) {
+  .card:not([data-wide="true"]) .title {
+    min-height: 2.04em;
+  }
+}
+
+.desc {
+  font-size: 0.95rem;
+}
+
+/* Sur une fiche large, la légende se met en deux colonnes */
+@media (min-width: 900px) {
+  .card[data-wide="true"] .info {
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 14px clamp(24px, 4vw, 64px);
+  }
+
+  .card[data-wide="true"] .meta {
+    grid-column: 1 / -1;
+  }
+
+  .card[data-wide="true"] .desc {
+    max-width: 62ch;
+  }
+}

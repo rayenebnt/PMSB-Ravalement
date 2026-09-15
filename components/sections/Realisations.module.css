@@ -6,3 +6,25 @@
 .galleryWrap {
   margin-top: clamp(40px, 6vw, 80px);
 }
+
+/* ── Renvoi vers la page complète ── */
+
+.footer {
+  margin-top: clamp(36px, 5vw, 64px);
+  padding-top: clamp(22px, 3vw, 34px);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 30px;
+}
+
+.count {
+  font-size: 10px;
+  color: var(--fg-faint);
+}
+
+.cta {
+  white-space: nowrap;
+}

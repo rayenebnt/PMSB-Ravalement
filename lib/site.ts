@@ -22,6 +22,7 @@ export const nav = [
   { label: "Ravalement", href: "/ravalement", index: "02" },
   { label: "Isolation", href: "/isolation", index: "03" },
   { label: "Étanchéité", href: "/etancheite", index: "04" },
+  { label: "Réalisations", href: "/realisations", index: "05" },
 ];
 
 export const homeAnchors = [
@@ -85,23 +86,98 @@ export const about = {
     "PMSB, Prestations Multi Services Bâtiment, est une entreprise spécialisée dans la réalisation de divers travaux de bâtiment dans la région Parisienne. Elle met à votre service ses compétences pour l'exécution d'un ravalement de façade, de travaux d'isolation, d'une peinture d'intérieur ou encore la rénovation totale de votre logement. Comptez sur notre savoir-faire pour obtenir un travail soigné.",
 };
 
-export const realisations = [
+/* ── Réalisations ────────────────────────────────────────────── */
+
+/**
+ * Un chantier livré.
+ *
+ * Deux formes possibles, l'affichage s'adapte seul :
+ * — `before` renseigné → la fiche devient un comparateur avant / après ;
+ * — `before` absent    → la fiche montre le seul résultat.
+ *
+ * Pour ajouter un chantier : déposer les photos dans
+ * `public/realisations/` puis compléter le tableau ci-dessous.
+ */
+export interface Realisation {
+  /** Identifiant stable : clé de rendu et ancre de la fiche. */
+  slug: string;
+  title: string;
+  /** Famille de travaux, affichée en pastille. */
+  category: string;
+  /** Localisation, lorsqu'elle est connue. */
+  place?: string;
+  description: string;
+  /** Photo avant travaux. Omise quand seul le résultat a été photographié. */
+  before?: string;
+  /** Photo après travaux : toujours renseignée. */
+  after: string;
+}
+
+export const realisations: Realisation[] = [
   {
-    image: "/qui1.jpg",
-    text: "Piochage total et refait en Saint Acier, Paris 75018",
+    slug: "bardage",
+    title: "Travaux de bardages",
+    category: "Bardage",
+    description:
+      "Reprise intégrale d'une façade en brique : préparation du support, pose du treillis d'armature et encadrement des menuiseries, puis finition enduite. La façade est uniformisée et protégée sur toute sa hauteur.",
+    before: "/realisations/bardage-avant.jpg",
+    after: "/realisations/bardage-apres.jpg",
+  },
+  {
+    slug: "pignon",
+    title: "Travaux de rénovation d'un pignon",
+    category: "Ravalement",
+    description:
+      "Remise à neuf d'un mur pignon sur toute sa hauteur : piochage des parties dégradées, ragréage du support puis enduit de finition teinté. Le pignon retrouve une surface homogène, à l'abri des infiltrations.",
+    after: "/realisations/pignon-apres.jpg",
+  },
+  {
+    slug: "renovation-parisienne",
+    title: "Rénovation à la parisienne",
+    category: "Ravalement",
+    description:
+      "Ravalement traditionnel d'un immeuble de rue : enduit à la chaux, reprise des corniches et des appuis, remise en peinture des ferronneries. Un rendu fidèle à l'écriture parisienne du bâti ancien.",
+    after: "/realisations/parisienne-apres.jpg",
+  },
+  {
+    slug: "saint-acier-75018",
+    title: "Piochage total et refait en Saint Acier",
+    category: "Ravalement",
     place: "Paris 75018",
+    description:
+      "Dépose complète de l'ancien enduit puis reprise en Saint Acier, du soubassement à la corniche.",
+    after: "/qui1.jpg",
   },
   {
-    image: "/imagebien3.JPG",
-    text: "Ravalement Chaux Sable, Paris 75008",
+    slug: "chaux-sable-75008",
+    title: "Ravalement chaux sable",
+    category: "Ravalement",
     place: "Paris 75008",
+    description:
+      "Ravalement à la chaux et au sable, taloché sur l'ensemble de la façade sur rue.",
+    after: "/imagebien3.JPG",
   },
   {
-    image: "/image_real.JPG",
-    text: "Travaux de Ravalement et de Zinguerie, Paris 75002",
+    slug: "zinguerie-75002",
+    title: "Ravalement et zinguerie",
+    category: "Ravalement · Zinguerie",
     place: "Paris 75002",
+    description:
+      "Ravalement de la façade accompagné de la reprise des ouvrages de zinguerie en couverture.",
+    after: "/image_real.JPG",
   },
 ];
+
+export const realisationsPage = {
+  title: "Réalisations",
+  introParagraphs: [
+    "Chaque chantier laisse une trace : un pignon repris, une façade parisienne retrouvée, une façade en brique entièrement réhabillée. Voici une sélection de nos interventions en région parisienne.",
+    "Lorsque les photos d'avant travaux existent, faites glisser la poignée au centre de l'image pour découvrir le résultat.",
+  ],
+  markers: ["Avant / après comparables", "Chantiers livrés", "Région parisienne"],
+  /** Mode d'emploi du comparateur, affiché au-dessus de la liste. */
+  hint: "Glissez la poignée pour comparer l'avant et l'après.",
+};
 
 /* ── Page Ravalement ─────────────────────────────────────────── */
 
