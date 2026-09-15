@@ -124,6 +124,15 @@ export const realisations: Realisation[] = [
     after: "/realisations/bardage-apres.jpeg",
   },
   {
+    slug: "clinique",
+    title: "Ravalement complet d'une clinique",
+    category: "Ravalement",
+    description:
+      "Réhabilitation de la façade d'un établissement de santé sur toute sa hauteur : dépose de l'ancien parement nervuré, reprise du support puis finition enduite claire. Le bâtiment passe d'un habillage vieilli à une façade lisse et uniforme.",
+    before: "/realisations/clinique-avant.jpeg",
+    after: "/realisations/clinique-apres.jpeg",
+  },
+  {
     slug: "pignon",
     title: "Travaux de rénovation d'un pignon",
     category: "Ravalement",
@@ -138,6 +147,30 @@ export const realisations: Realisation[] = [
     description:
       "Ravalement traditionnel d'un immeuble de rue : enduit à la chaux, reprise des corniches et des appuis, remise en peinture des ferronneries. Un rendu fidèle à l'écriture parisienne du bâti ancien.",
     after: "/realisations/parisienne-apres.jpeg",
+  },
+  {
+    slug: "cheminee",
+    title: "Travaux sur une cheminée",
+    category: "Ravalement · Couverture",
+    description:
+      "Reprise d'une souche de cheminée en couronnement de toiture : réfection de l'enduit, restitution du couronnement mouluré et remise en état des mitrons. L'intervention se fait depuis un échafaudage, sans toucher à la couverture en ardoise.",
+    after: "/realisations/cheminee-apres.jpeg",
+  },
+  {
+    slug: "poncage-marbre",
+    title: "Travaux de ponçage sur marbre",
+    category: "Pierre",
+    description:
+      "Ponçage des parements en marbre d'une résidence, étage par étage. Le grain est repris sur toute la façade : l'encrassement disparaît et la pierre retrouve sa teinte d'origine sans être recouverte.",
+    after: "/realisations/poncage-marbre-apres.jpeg",
+  },
+  {
+    slug: "ravalement-brique",
+    title: "Travaux de ravalement sur brique",
+    category: "Brique",
+    description:
+      "Ravalement d'une façade en brique polychrome : nettoyage du parement, reprise des joints et des appuis en pierre, puis remise en peinture du soubassement. Le damier rouge et jaune ressort à nouveau sur toute la hauteur.",
+    after: "/realisations/ravalement-brique-apres.jpeg",
   },
   {
     slug: "saint-acier-75018",
