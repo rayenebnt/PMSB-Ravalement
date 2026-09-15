@@ -124,6 +124,15 @@ export const realisations: Realisation[] = [
     after: "/realisations/bardage-apres.jpeg",
   },
   {
+    slug: "clinique",
+    title: "Ravalement complet d'une clinique",
+    category: "Ravalement",
+    description:
+      "Réhabilitation de la façade d'un établissement de santé sur toute sa hauteur : dépose de l'ancien parement nervuré, reprise du support puis finition enduite claire. Le bâtiment passe d'un habillage vieilli à une façade lisse et uniforme.",
+    before: "/realisations/clinique-avant.jpeg",
+    after: "/realisations/clinique-apres.jpeg",
+  },
+  {
     slug: "pignon",
     title: "Travaux de rénovation d'un pignon",
     category: "Ravalement",
