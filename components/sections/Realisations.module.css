@@ -55,8 +55,25 @@
   align-content: start;
 }
 
+/*
+ * Le format est porté par la vignette et repris par ce qu'elle contient :
+ * une photo seule, qui reçoit aussi le cadre `frame`, ou un comparateur,
+ * qui apporte le sien. Les repères chiffrés se posent par-dessus, d'où
+ * le positionnement relatif dans les deux cas.
+ */
 .media {
+  position: relative;
   aspect-ratio: 4 / 5;
+}
+
+.media > .frame,
+.media > [data-fit] {
+  width: 100%;
+  height: 100%;
+}
+
+a.media {
+  display: block;
   border: 1px solid var(--line);
 }
 
@@ -68,8 +85,8 @@
   transition: transform 1.1s var(--ease);
 }
 
-.card:hover .media img,
-.card:focus-visible .media img {
+.card:hover a.media img,
+a.media:focus-visible img {
   transform: scale(1.045);
 }
 
@@ -103,12 +120,14 @@
 .legend {
   display: grid;
   gap: 7px;
+  align-content: start;
   padding-top: 14px;
   border-top: 1px solid var(--line);
   transition: border-color 0.5s var(--ease);
 }
 
-.card:hover .legend {
+.card:hover .legend,
+.legend:focus-visible {
   border-color: var(--hiviz-deep);
 }
 

@@ -68,6 +68,12 @@ Sur l'accueil, le même tableau alimente le rail d'aperçu : photo à
 pleine lumière, pastille « Avant / Après » quand il y en a un, et lien
 vers la fiche correspondante (`/realisations#<slug>`).
 
+Une vignette avant / après y est un comparateur ouvert sur l'après : il
+n'en bouge qu'au geste du visiteur. Le glissement s'y prend à la poignée
+seule — le reste de la photo rend le geste au rail, qui doit pouvoir
+défiler même quand la vignette visible est un comparateur. Sur la fiche,
+où rien ne défile à côté, la photo entière est glissable.
+
 Par défaut la photo remplit son cadre et déborde sur les bords. Une
 prise de vue verticale y perdrait toute sa hauteur : `fit: "contain"`
 la bascule alors dans un cadre portrait, plus étroit et centré, où elle

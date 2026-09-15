@@ -81,12 +81,30 @@
 
 /* ── Poignée ── */
 
+/*
+ * La poignée reste entièrement dans le cadre, même quand le volet est
+ * poussé à fond : une pastille coupée en deux par le bord ne se lit
+ * plus comme une prise. Le filet, lui, s'efface en bout de course —
+ * décalé de la coupe, il désignerait une limite qui n'existe plus.
+ */
+/* Glissement à la poignée : le curseur natif ne garde que le clavier,
+   et le reste du cadre laisse passer le geste à ce qu'il y a dessous. */
+.frame[data-grip="handle"] .range {
+  pointer-events: none;
+}
+
+.frame[data-grip="handle"] .handleGrip {
+  pointer-events: auto;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
 .handle {
   position: absolute;
   z-index: 4;
   top: 0;
   bottom: 0;
-  left: var(--pos);
+  left: clamp(23px, var(--pos), calc(100% - 23px));
   width: 0;
   display: grid;
   place-items: center;
@@ -99,13 +117,19 @@
   top: 0;
   bottom: 0;
   width: 2px;
+  opacity: 1;
+  transition: opacity 0.3s var(--ease), background-color 0.4s var(--ease);
   background: var(--paper);
   box-shadow: 0 0 0 1px rgba(13, 13, 16, 0.25);
-  transition: background-color 0.4s var(--ease);
 }
 
 .frame[data-held="true"] .handleLine {
   background: var(--hiviz);
+}
+
+.frame[data-edge="start"] .handleLine,
+.frame[data-edge="end"] .handleLine {
+  opacity: 0;
 }
 
 .handleGrip {
