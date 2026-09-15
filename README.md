@@ -42,8 +42,8 @@ Modifier ce fichier suffit à mettre le site à jour — aucune chaîne n'est
 ## Ajouter une réalisation
 
 Les chantiers vivent dans le tableau `realisations` de `lib/site.ts`. Une
-entrée suffit à alimenter les trois endroits où ils apparaissent : la
-galerie 3D de l'accueil, la page `/realisations` et le compteur du renvoi.
+entrée suffit à alimenter les trois endroits où ils apparaissent : le rail
+d'aperçu de l'accueil, la page `/realisations` et le compteur du renvoi.
 
 ```ts
 {
@@ -63,6 +63,10 @@ absent, la fiche montre le seul résultat. Rien d'autre à toucher :
 la grille place les comparateurs sur la largeur entière et élargit
 la dernière fiche quand elle resterait seule sur sa ligne.
 
+Sur l'accueil, le même tableau alimente le rail d'aperçu : photo à
+pleine lumière, pastille « Avant / Après » quand il y en a un, et lien
+vers la fiche correspondante (`/realisations#<slug>`).
+
 Les photos vont dans `public/realisations/`, nommées `<slug>-avant.jpeg`
 et `<slug>-apres.jpeg`. JPEG, 1600 px sur le grand côté, qualité 80. Les
 deux photos d'une même paire gagnent à être cadrées pareil : le
@@ -70,12 +74,11 @@ comparateur les superpose dans un cadre unique, en `object-fit: cover`.
 
 ## Les scènes 3D
 
-Cinq scènes WebGL, toutes écrites à la main (aucun modèle importé) :
+Quatre scènes WebGL, toutes écrites à la main (aucun modèle importé) :
 
 | Scène | Où | Principe |
 | --- | --- | --- |
 | `StoneWall` | Accueil | Façade en pierre de taille instanciée ; l'appareil se monte assise par assise, le curseur « ravale » la pierre encrassée |
-| `Gallery3D` | Accueil | Galerie de réalisations sur plans courbes, glissable, avec franges chromatiques liées à la vitesse |
 | `GridField` | Chapitres sombres | Trame d'implantation en perspective, tracée dans le fragment shader |
 | `MaterialCanvas` | Ravalement | Bloc de matière en lancer de rayons : pierre, brique, plâtre et imperméabilisation entièrement procéduraux |
 | `ThermalFacade` / `ThermalWall` | Isolation | Thermographie interactive, puis coupe de mur animée avec particules de déperdition |
