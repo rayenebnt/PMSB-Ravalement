@@ -22,9 +22,6 @@ export default function Cursor() {
     const soft = { x: target.x, y: target.y };
     let raf = 0;
     let last = performance.now();
-    // L'élément survolé, gardé entre deux mouvements : certains changent
-    // leur libellé sous un pointeur immobile.
-    let over: HTMLElement | null = null;
 
     const move = (e: PointerEvent) => {
       target.x = e.clientX;
@@ -35,7 +32,6 @@ export default function Cursor() {
         "[data-cursor], a, button"
       ) as HTMLElement | null;
 
-      over = el;
       if (!el) {
         setActive(false);
         setLabel("");
@@ -52,8 +48,6 @@ export default function Cursor() {
       last = now;
       soft.x += (target.x - soft.x) * k;
       soft.y += (target.y - soft.y) * k;
-
-      if (over) setLabel(over.dataset?.cursor ?? "");
 
       if (dot.current)
         dot.current.style.transform = `translate3d(${target.x}px, ${target.y}px, 0) translate(-50%, -50%)`;

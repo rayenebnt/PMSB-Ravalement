@@ -5,12 +5,12 @@ import { realisations, realisationsPage, type Realisation } from "@/lib/site";
 import s from "./RealisationsGrid.module.css";
 
 /* ══════════════════════════════════════════════════════════════
-   Les chantiers, en deux sections.
+   Liste des chantiers.
 
-   Les avant / après d'abord : un comparateur occupe la largeur
-   entière, il en a besoin. Les résultats seuls ensuite, sur deux
-   colonnes. Le classement vient des données — un chantier bascule
-   d'une section à l'autre le jour où sa photo d'avant arrive.
+   La grille compte deux colonnes. Un chantier photographié avant
+   et après occupe la largeur entière — le comparateur a besoin de
+   place. Un chantier resté seul en fin de ligne est élargi lui
+   aussi, pour qu'aucune demi-ligne ne reste béante.
    ══════════════════════════════════════════════════════════════ */
 
 interface Slot {
@@ -18,10 +18,6 @@ interface Slot {
   wide: boolean;
 }
 
-/**
- * Répartit les fiches sur deux colonnes. Une fiche restée seule en
- * fin de ligne est élargie, pour qu'aucune demi-ligne ne reste béante.
- */
 function layout(items: Realisation[]): Slot[] {
   const slots: Slot[] = items.map((item) => ({
     item,
@@ -35,7 +31,7 @@ function layout(items: Realisation[]): Slot[] {
       return;
     }
     if (column === 0 && i === slots.length - 1) {
-      slot.wide = true;
+      slot.wide = true; // dernière fiche, seule sur sa ligne
       return;
     }
     column = column === 0 ? 1 : 0;
@@ -75,6 +71,7 @@ function Card({ item, wide, position }: Slot & { position: number }) {
               fill
               sizes={sizes}
               quality={82}
+              priority={position === 0}
             />
             <span className={`mono ${s.resultChip}`}>Résultat</span>
           </div>
@@ -98,26 +95,21 @@ function Card({ item, wide, position }: Slot & { position: number }) {
   );
 }
 
-interface GroupProps {
-  id: string;
-  index: string;
-  tag: string;
-  title: string;
-  lede: string;
-  hint?: string;
-  items: Realisation[];
-  tone?: "base" | "alt";
-}
-
-function Group({ id, index, tag, title, lede, hint, items, tone = "base" }: GroupProps) {
-  const slots = layout(items);
+export default function RealisationsGrid() {
+  const slots = layout(realisations);
+  const comparable = realisations.filter((r) => r.before).length;
 
   return (
-    <section className={`section ${s.section}`} id={id} data-tone={tone}>
+    <section className={`section ${s.section}`} id="chantiers">
       <div className="shell">
-        <SectionHead index={index} tag={tag} title={title} lede={lede} />
+        <SectionHead
+          index="01"
+          tag="Chantiers livrés"
+          title="Nos réalisations"
+          lede={realisationsPage.introParagraphs[0]}
+        />
 
-        {hint && (
+        {comparable > 0 && (
           <p className={`mono ${s.hint}`} data-reveal="fade" data-reveal-delay="200">
             <span className={s.hintIcon} aria-hidden="true">
               <svg viewBox="0 0 24 24" width="14" height="14">
@@ -131,7 +123,7 @@ function Group({ id, index, tag, title, lede, hint, items, tone = "base" }: Grou
                 />
               </svg>
             </span>
-            {hint}
+            {realisationsPage.hint}
           </p>
         )}
 
@@ -147,39 +139,5 @@ function Group({ id, index, tag, title, lede, hint, items, tone = "base" }: Grou
         </div>
       </div>
     </section>
-  );
-}
-
-export default function RealisationsGrid() {
-  const { compare, results } = realisationsPage;
-  const withBefore = realisations.filter((r) => r.before);
-  const resultOnly = realisations.filter((r) => !r.before);
-
-  return (
-    <>
-      {withBefore.length > 0 && (
-        <Group
-          id="avant-apres"
-          index={compare.index}
-          tag={compare.tag}
-          title={compare.title}
-          lede={compare.lede}
-          hint={compare.hint}
-          items={withBefore}
-        />
-      )}
-
-      {resultOnly.length > 0 && (
-        <Group
-          id="resultats"
-          index={results.index}
-          tag={results.tag}
-          title={results.title}
-          lede={results.lede}
-          items={resultOnly}
-          tone="alt"
-        />
-      )}
-    </>
   );
 }
