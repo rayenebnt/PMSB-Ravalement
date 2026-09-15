@@ -80,6 +80,47 @@
   }
 }
 
+/*
+ * Cadre carré pour les photos montrées en entier. Il n'avantage ni le
+ * portrait ni le paysage : dans une paire dépareillée — l'avant pris à
+ * l'horizontale, l'après à la verticale — chacune garde une présence
+ * comparable, là où un cadre orienté réduirait l'autre à une bande.
+ * Il reste centré et resserré dans la fiche, sinon la photo flotterait
+ * au milieu d'une grande étendue vide.
+ */
+/* Largeur explicite et non `max-width` + marges automatiques : sur un
+   élément de grille, les marges automatiques lui retirent son
+   étirement, et le cadre — dont le contenu est en position absolue —
+   n'a alors plus aucune largeur d'où partir. */
+.card[data-fit="contain"] .media {
+  width: min(100%, 640px);
+  justify-self: center;
+}
+
+.card[data-fit="contain"] .media > * {
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 900px) {
+  .card[data-wide="true"][data-fit="contain"] .media > * {
+    aspect-ratio: 1 / 1;
+    max-height: none;
+  }
+
+  /*
+   * Le cadre ne dépasse jamais l'écran : le comparateur se manipule
+   * d'un seul geste, il doit tenir en entier sous les yeux. La borne
+   * porte sur la largeur, dont la hauteur découle — le cadre est carré.
+   */
+  .card[data-fit="contain"] .media {
+    width: min(100%, 720px, 74svh);
+  }
+}
+
+.card[data-fit="contain"] .single img {
+  object-fit: contain;
+}
+
 /* ── Photo seule ── */
 
 .single {

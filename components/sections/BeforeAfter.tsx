@@ -11,6 +11,8 @@ interface Props {
   subject: string;
   sizes?: string;
   priority?: boolean;
+  /** `contain` montre les photos en entier plutôt que de les rogner. */
+  fit?: "cover" | "contain";
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -36,6 +38,7 @@ export default function BeforeAfter({
   subject,
   sizes = "(max-width: 1100px) 100vw, 1400px",
   priority = false,
+  fit = "cover",
 }: Props) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [held, setHeld] = useState(false);
@@ -83,6 +86,7 @@ export default function BeforeAfter({
       className={s.frame}
       data-held={held}
       data-edge={edge}
+      data-fit={fit}
       data-cursor="Glisser"
     >
       {/* Après : couche du dessous, toujours entière */}

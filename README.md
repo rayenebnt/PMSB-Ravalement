@@ -54,6 +54,7 @@ d'aperçu de l'accueil, la page `/realisations` et le compteur du renvoi.
   description: "…",
   before: "/realisations/bardage-avant.jpeg",   // facultatif
   after: "/realisations/bardage-apres.jpeg",    // obligatoire
+  fit: "contain",                      // facultatif, voir ci-dessous
 }
 ```
 
@@ -66,6 +67,12 @@ la dernière fiche quand elle resterait seule sur sa ligne.
 Sur l'accueil, le même tableau alimente le rail d'aperçu : photo à
 pleine lumière, pastille « Avant / Après » quand il y en a un, et lien
 vers la fiche correspondante (`/realisations#<slug>`).
+
+Par défaut la photo remplit son cadre et déborde sur les bords. Une
+prise de vue verticale y perdrait toute sa hauteur : `fit: "contain"`
+la bascule alors dans un cadre portrait, plus étroit et centré, où elle
+tient en entier. Le cadre ne dépasse jamais la hauteur de l'écran — un
+comparateur se manipule d'un seul geste, il doit rester sous les yeux.
 
 Les photos vont dans `public/realisations/`, nommées `<slug>-avant.jpeg`
 et `<slug>-apres.jpeg`. JPEG, 1600 px sur le grand côté, qualité 80. Les

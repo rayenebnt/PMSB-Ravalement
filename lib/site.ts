@@ -111,6 +111,13 @@ export interface Realisation {
   before?: string;
   /** Photo après travaux : toujours renseignée. */
   after: string;
+  /**
+   * Cadrage sur la page Réalisations. Par défaut la photo remplit le
+   * cadre, quitte à être rognée sur les bords. `contain` la montre en
+   * entier dans un cadre portrait plus étroit : à réserver aux prises
+   * de vue verticales, qu'un cadre large amputerait de leur hauteur.
+   */
+  fit?: "cover" | "contain";
 }
 
 export const realisations: Realisation[] = [
@@ -131,6 +138,7 @@ export const realisations: Realisation[] = [
       "Réhabilitation de la façade d'un établissement de santé sur toute sa hauteur : dépose de l'ancien parement nervuré, reprise du support puis finition enduite claire. Le bâtiment passe d'un habillage vieilli à une façade lisse et uniforme.",
     before: "/realisations/clinique-avant.jpeg",
     after: "/realisations/clinique-apres.jpeg",
+    fit: "contain",
   },
   {
     slug: "pignon",

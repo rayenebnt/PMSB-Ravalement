@@ -42,15 +42,19 @@ function layout(items: Realisation[]): Slot[] {
 
 function Card({ item, wide, position }: Slot & { position: number }) {
   const number = String(position + 1).padStart(2, "0");
-  const sizes = wide
-    ? "(max-width: 1100px) 100vw, 1400px"
-    : "(max-width: 900px) 100vw, 46vw";
+  const sizes =
+    item.fit === "contain"
+      ? "(max-width: 700px) 100vw, 640px"
+      : wide
+      ? "(max-width: 1100px) 100vw, 1400px"
+      : "(max-width: 900px) 100vw, 46vw";
 
   return (
     <article
       id={item.slug}
       className={s.card}
       data-wide={wide}
+      data-fit={item.fit ?? "cover"}
       data-reveal="up"
       data-reveal-delay={(position % 2) * 120}
     >
@@ -62,6 +66,7 @@ function Card({ item, wide, position }: Slot & { position: number }) {
             subject={item.title}
             sizes={sizes}
             priority={position === 0}
+            fit={item.fit}
           />
         ) : (
           <div className={`frame ${s.single}`}>

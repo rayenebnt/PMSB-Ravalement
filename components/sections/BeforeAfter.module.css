@@ -23,6 +23,12 @@
   object-fit: cover;
 }
 
+/* Photo entière : ce qui dépasse du cadre n'est plus coupé, il manque
+   à la place une bande de fond de part et d'autre. */
+.frame[data-fit="contain"] .layer img {
+  object-fit: contain;
+}
+
 /* Le volet « avant » s'arrête à la poignée */
 .beforeLayer {
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
