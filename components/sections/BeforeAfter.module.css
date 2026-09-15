@@ -4,10 +4,14 @@
 
 .frame {
   --pos: 50%;
+  /* Le fond commun aux deux couches, déclaré une fois pour qu'elles ne
+     puissent pas diverger : le volet s'y découperait sinon. */
+  --ground: var(--ink-2);
+
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: var(--ink-2);
+  background: var(--ground);
   border: 1px solid var(--line);
   touch-action: pan-y; /* le doigt fait défiler la page verticalement */
 }
@@ -29,8 +33,16 @@
   object-fit: contain;
 }
 
-/* Le volet « avant » s'arrête à la poignée */
+/*
+ * Le volet « avant » s'arrête à la poignée.
+ *
+ * Il porte son propre fond, sans quoi la couche du dessous se verrait
+ * partout où sa photo ne remplit pas le cadre — et les deux états d'un
+ * chantier n'ont pas forcément le même cadrage. Le volet montre alors
+ * l'avant seul, pas l'avant posé sur l'après.
+ */
 .beforeLayer {
+  background: var(--ground);
   clip-path: inset(0 calc(100% - var(--pos)) 0 0);
 }
 
