@@ -144,7 +144,7 @@ export default function WaterSurface({ className }: { className?: string }) {
           uTime: { value: 0 },
           uRipples: { value: ripples },
           uMembrane: { value: new THREE.Color("#33403f") },
-          uAccent: { value: new THREE.Color("#d6ff3d") },
+          uAccent: { value: new THREE.Color("#129bfa") },
         };
 
         const material = new THREE.ShaderMaterial({

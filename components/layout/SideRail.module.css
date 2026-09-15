@@ -54,7 +54,7 @@
 .fill {
   position: absolute;
   inset: 0;
-  background: #d6ff3d;
+  background: var(--hiviz);
   transform-origin: top;
   transform: scaleY(var(--scroll-progress, 0));
 }

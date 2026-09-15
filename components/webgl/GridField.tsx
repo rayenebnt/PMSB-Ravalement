@@ -82,7 +82,7 @@ export default function GridField({ className }: { className?: string }) {
           uTime: { value: 0 },
           uScroll: { value: 0 },
           uLine: { value: new THREE.Color("#a9ad93") },
-          uAccent: { value: new THREE.Color("#d6ff3d") },
+          uAccent: { value: new THREE.Color("#129bfa") },
         };
 
         const material = new THREE.ShaderMaterial({

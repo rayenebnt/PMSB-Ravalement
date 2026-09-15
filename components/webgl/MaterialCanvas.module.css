@@ -14,7 +14,7 @@
 :global(.on-dark) .sample {
   background: radial-gradient(
     58% 58% at 50% 46%,
-    rgba(214, 255, 61, 0.075),
+    rgba(18, 155, 250, 0.075),
     transparent 72%
   );
 }

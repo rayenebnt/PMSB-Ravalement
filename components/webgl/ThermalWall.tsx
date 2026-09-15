@@ -86,7 +86,7 @@ export default function ThermalWall({ insulated }: Props) {
         const key = new THREE.DirectionalLight(0xfff2dd, 1.5);
         key.position.set(-4, 6, 6);
         scene.add(key);
-        const rim = new THREE.DirectionalLight(0xd6ff3d, 0.45);
+        const rim = new THREE.DirectionalLight(0x129bfa, 0.45);
         rim.position.set(5, -2, -4);
         scene.add(rim);
 
@@ -118,7 +118,7 @@ export default function ThermalWall({ insulated }: Props) {
         // Fine ligne de rappel sur l'arête du complexe
         const edge = new THREE.LineSegments(
           new THREE.EdgesGeometry(new THREE.BoxGeometry(W, H, 0.14)),
-          new THREE.LineBasicMaterial({ color: 0xd6ff3d, transparent: true, opacity: 0 })
+          new THREE.LineBasicMaterial({ color: 0x129bfa, transparent: true, opacity: 0 })
         );
         edge.position.set(0, 0, 1.15);
         scene.add(edge);

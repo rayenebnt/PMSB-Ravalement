@@ -290,7 +290,7 @@ export default function StoneWall({ className }: Props) {
           uLight: { value: new THREE.Vector2(0, 0) },
           uStone: { value: new THREE.Color("#e8dcc4") },
           uSoot: { value: new THREE.Color("#746b5e") },
-          uAccent: { value: new THREE.Color("#d6ff3d") },
+          uAccent: { value: new THREE.Color("#129bfa") },
           uFog: { value: new THREE.Color("#0d0d10") },
         };
 

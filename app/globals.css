@@ -2,7 +2,7 @@
    PMSB — Design system
    Concept : « Le bâti vivant ». Une grille d'architecte, une
    typographie éditoriale massive, la pierre de Paris en fond
-   et un accent de signalisation de chantier.
+   et le bleu du logo en accent.
    ══════════════════════════════════════════════════════════════ */
 
 :root {
@@ -17,8 +17,10 @@
   --ink-3: #22222a;
   --ink-4: #33333d;
 
-  --hiviz: #d6ff3d; /* signalisation */
-  --hiviz-deep: #b4e000;
+  --hiviz: #129bfa; /* bleu du logo */
+  /* Variante pour fond clair : le bleu de marque n'y tient que 2,5:1,
+     insuffisant pour un anneau de focus ou un filet. */
+  --hiviz-deep: #0a6fb8;
   --rust: #d4400f; /* brique */
 
   /* ── Rôles (thème clair par défaut) ── */

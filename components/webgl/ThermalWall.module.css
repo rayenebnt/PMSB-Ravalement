@@ -4,7 +4,7 @@
   height: clamp(340px, 56vh, 560px);
   background: radial-gradient(
     70% 70% at 50% 50%,
-    rgba(214, 255, 61, 0.05),
+    rgba(18, 155, 250, 0.05),
     transparent 72%
   );
 }
