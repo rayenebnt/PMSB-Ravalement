@@ -12,7 +12,7 @@ const preview: Record<string, string> = {
   "/ravalement": "/new-ravalement.jpg",
   "/isolation": "/new-isolation.jpg",
   "/etancheite": "/new-etancheite.jpg",
-  "/realisations": "/realisations/bardage-apres.jpg",
+  "/realisations": "/realisations/bardage-apres.jpeg",
 };
 
 export default function Header() {

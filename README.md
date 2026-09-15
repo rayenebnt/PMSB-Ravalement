@@ -52,8 +52,8 @@ galerie 3D de l'accueil, la page `/realisations` et le compteur du renvoi.
   category: "Bardage",                 // pastille
   place: "Paris 75002",                // facultatif
   description: "…",
-  before: "/realisations/bardage-avant.jpg",   // facultatif
-  after: "/realisations/bardage-apres.jpg",    // obligatoire
+  before: "/realisations/bardage-avant.jpeg",   // facultatif
+  after: "/realisations/bardage-apres.jpeg",    // obligatoire
 }
 ```
 
@@ -63,8 +63,8 @@ absent, la fiche montre le seul résultat. Rien d'autre à toucher :
 la grille place les comparateurs sur la largeur entière et élargit
 la dernière fiche quand elle resterait seule sur sa ligne.
 
-Les photos vont dans `public/realisations/`, nommées `<slug>-avant.jpg`
-et `<slug>-apres.jpg`. JPEG, 1600 px sur le grand côté, qualité 80. Les
+Les photos vont dans `public/realisations/`, nommées `<slug>-avant.jpeg`
+et `<slug>-apres.jpeg`. JPEG, 1600 px sur le grand côté, qualité 80. Les
 deux photos d'une même paire gagnent à être cadrées pareil : le
 comparateur les superpose dans un cadre unique, en `object-fit: cover`.
 

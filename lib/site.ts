@@ -120,8 +120,8 @@ export const realisations: Realisation[] = [
     category: "Bardage",
     description:
       "Reprise intégrale d'une façade en brique : préparation du support, pose du treillis d'armature et encadrement des menuiseries, puis finition enduite. La façade est uniformisée et protégée sur toute sa hauteur.",
-    before: "/realisations/bardage-avant.jpg",
-    after: "/realisations/bardage-apres.jpg",
+    before: "/realisations/bardage-avant.jpeg",
+    after: "/realisations/bardage-apres.jpeg",
   },
   {
     slug: "pignon",
@@ -129,7 +129,7 @@ export const realisations: Realisation[] = [
     category: "Ravalement",
     description:
       "Remise à neuf d'un mur pignon sur toute sa hauteur : piochage des parties dégradées, ragréage du support puis enduit de finition teinté. Le pignon retrouve une surface homogène, à l'abri des infiltrations.",
-    after: "/realisations/pignon-apres.jpg",
+    after: "/realisations/pignon-apres.jpeg",
   },
   {
     slug: "renovation-parisienne",
@@ -137,7 +137,7 @@ export const realisations: Realisation[] = [
     category: "Ravalement",
     description:
       "Ravalement traditionnel d'un immeuble de rue : enduit à la chaux, reprise des corniches et des appuis, remise en peinture des ferronneries. Un rendu fidèle à l'écriture parisienne du bâti ancien.",
-    after: "/realisations/parisienne-apres.jpg",
+    after: "/realisations/parisienne-apres.jpeg",
   },
   {
     slug: "saint-acier-75018",
