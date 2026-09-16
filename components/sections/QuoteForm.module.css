@@ -1,19 +1,33 @@
 /* ══════════════════════════════════════════════════════════════
-   Demande de devis — posée dans le pied de page, sur fond sombre
+   Demande de devis — îlot clair dans le pied de page sombre
    ══════════════════════════════════════════════════════════════ */
 
+/*
+ * Le bloc rejoue l'inversion de rôles de `.on-dark`, en sens inverse :
+ * la matière ne change pas, seuls les rôles sont repris à leurs
+ * valeurs claires. Un formulaire posé sur le graphite du pied de page
+ * s'y effaçait ; sur la chaux il se lit comme ce qu'il est, une zone
+ * à remplir.
+ */
 .block {
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --fg-mute: rgba(13, 13, 16, 0.62);
+  --fg-faint: rgba(13, 13, 16, 0.42);
+  --line: rgba(13, 13, 16, 0.18);
+
+  background: var(--bg);
+  color: var(--fg);
+  padding: clamp(26px, 4vw, 60px);
   display: grid;
-  gap: clamp(28px, 4vw, 56px);
-  padding-top: clamp(40px, 5vw, 70px);
-  border-top: 1px solid var(--line);
+  gap: clamp(26px, 3.5vw, 52px);
 }
 
 @media (min-width: 980px) {
   .block {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
     align-items: start;
-    gap: clamp(40px, 6vw, 96px);
+    gap: clamp(36px, 5vw, 80px);
   }
 }
 
@@ -21,34 +35,49 @@
 
 .intro {
   display: grid;
-  gap: 16px;
+  gap: 14px;
   align-content: start;
-  max-width: 40ch;
+  max-width: 34ch;
 }
 
+/* Reprise locale de l'étiquette technique : la feuille globale en
+   redéfinit le filet sous `.on-dark`, qui englobe ce bloc. */
 .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-size: 10px;
+  color: var(--fg-mute);
+}
+
+.tag::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: var(--hiviz-deep);
 }
 
 .title {
-  font-size: clamp(1.6rem, 3vw, 2.6rem);
-  line-height: 1.02;
+  font-size: clamp(1.7rem, 3.2vw, 2.8rem);
+  line-height: 1;
+  color: var(--fg);
 }
 
 .lede {
   font-size: 0.95rem;
+  color: var(--fg-mute);
 }
 
 /* ── Champs ── */
 
 .form {
   display: grid;
-  gap: clamp(16px, 2vw, 22px);
+  gap: clamp(14px, 1.8vw, 20px);
 }
 
 .row {
   display: grid;
-  gap: clamp(16px, 2vw, 22px);
+  gap: clamp(14px, 1.8vw, 20px);
 }
 
 @media (min-width: 620px) {
@@ -59,7 +88,7 @@
 
 .field {
   display: grid;
-  gap: 8px;
+  gap: 7px;
   min-width: 0;
 }
 
@@ -69,9 +98,10 @@
 }
 
 /*
- * Le champ se résume à son filet inférieur : posé sur le lettrage
- * géant du pied de page, un cadre plein ferait une boîte opaque au
- * milieu du dessin.
+ * Le champ est creusé dans la chaux plutôt que souligné d'un filet :
+ * un simple trait se confond avec les règles de la page, un creux se
+ * lit tout de suite comme une case à remplir. Angles vifs, comme les
+ * cadres photo du site — seuls les boutons sont arrondis.
  */
 .field input,
 .field select,
@@ -80,12 +110,13 @@
   font: inherit;
   font-size: 0.95rem;
   color: var(--fg);
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--line);
+  background: var(--paper-3);
+  /* Le contour porte à lui seul la limite du champ : sous 45 % d'encre
+     il passerait sous les 3:1 qui la rendent repérable. */
+  border: 1px solid rgba(13, 13, 16, 0.45);
   border-radius: 0;
-  padding: 10px 2px;
-  transition: border-color 0.4s var(--ease);
+  padding: 13px 14px;
+  transition: border-color 0.3s var(--ease), background-color 0.3s var(--ease);
 }
 
 /* Safari iOS zoome la page dès qu'on touche un champ dont le texte
@@ -100,40 +131,37 @@
 
 .field textarea {
   resize: vertical;
-  min-height: 108px;
+  min-height: 120px;
   line-height: 1.55;
 }
 
+/* L'indication porte une consigne utile : elle est tenue au même
+   seuil qu'un texte, pas à celui d'un ornement. */
 .field input::placeholder,
 .field textarea::placeholder {
-  color: var(--fg-faint);
+  color: var(--fg-mute);
 }
 
 .field input:hover,
 .field select:hover,
 .field textarea:hover {
-  border-color: var(--fg-mute);
+  border-color: var(--ink);
 }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
   outline: none;
-  border-color: var(--hiviz);
+  background: var(--paper);
+  border-color: var(--hiviz-deep);
+  box-shadow: inset 0 0 0 1px var(--hiviz-deep);
 }
 
 .field input:focus-visible,
 .field select:focus-visible,
 .field textarea:focus-visible {
-  outline: 2px solid var(--hiviz);
-  outline-offset: 4px;
-}
-
-/* La liste déroulante native se colore au système : on repose les
-   couleurs du menu, sinon il sort en texte clair sur fond clair. */
-.field select option {
-  color: var(--ink);
-  background: var(--paper);
+  outline: 2px solid var(--hiviz-deep);
+  outline-offset: 2px;
 }
 
 /* ── Envoi ── */
@@ -142,16 +170,67 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 18px 28px;
+  gap: 16px 26px;
   margin-top: clamp(4px, 1vw, 10px);
 }
 
+/*
+ * Le bouton reprend la forme de ceux du site sans passer par la classe
+ * globale : celle-ci s'inverse sous `.on-dark`, qui englobe ce bloc,
+ * et sortirait un bouton chaux sur la chaux.
+ */
 .submit {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 30px;
+  border-radius: 999px;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   white-space: nowrap;
+  color: var(--paper);
+  background: var(--ink);
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.45s var(--ease);
+}
+
+.submit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--hiviz);
+  transform: translateY(101%);
+  transition: transform 0.55s var(--ease);
+}
+
+.submit:hover,
+.submit:focus-visible {
+  color: var(--ink);
+}
+
+.submit:hover::after,
+.submit:focus-visible::after {
+  transform: translateY(0);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.45s var(--ease);
+}
+
+.submit:hover .arrow {
+  transform: translateX(5px);
 }
 
 .note {
-  flex: 1 1 260px;
+  flex: 1 1 240px;
   font-size: 9px;
   line-height: 1.7;
   color: var(--fg-mute);

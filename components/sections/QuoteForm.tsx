@@ -86,7 +86,7 @@ export default function QuoteForm() {
   return (
     <div className={s.block} id="devis">
       <div className={s.intro}>
-        <span className={`mono tag ${s.tag}`}>{devis.tag}</span>
+        <span className={`mono ${s.tag}`}>{devis.tag}</span>
         <h3 className={`display ${s.title}`}>{devis.title}</h3>
         <p className={`body-text ${s.lede}`}>{devis.lede}</p>
       </div>
@@ -177,9 +177,9 @@ export default function QuoteForm() {
         </label>
 
         <div className={s.foot}>
-          <button type="submit" className={`btn btn-solid ${s.submit}`}>
+          <button type="submit" className={s.submit}>
             {devis.submit}
-            <span className="btn-arrow" aria-hidden="true">
+            <span className={s.arrow} aria-hidden="true">
               →
             </span>
           </button>
