@@ -1,0 +1,160 @@
+/* ══════════════════════════════════════════════════════════════
+   Demande de devis — posée dans le pied de page, sur fond sombre
+   ══════════════════════════════════════════════════════════════ */
+
+.block {
+  display: grid;
+  gap: clamp(28px, 4vw, 56px);
+  padding-top: clamp(40px, 5vw, 70px);
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 980px) {
+  .block {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+    gap: clamp(40px, 6vw, 96px);
+  }
+}
+
+/* ── Accroche ── */
+
+.intro {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  max-width: 40ch;
+}
+
+.tag {
+  font-size: 10px;
+}
+
+.title {
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  line-height: 1.02;
+}
+
+.lede {
+  font-size: 0.95rem;
+}
+
+/* ── Champs ── */
+
+.form {
+  display: grid;
+  gap: clamp(16px, 2vw, 22px);
+}
+
+.row {
+  display: grid;
+  gap: clamp(16px, 2vw, 22px);
+}
+
+@media (min-width: 620px) {
+  .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 9px;
+  color: var(--fg-mute);
+}
+
+/*
+ * Le champ se résume à son filet inférieur : posé sur le lettrage
+ * géant du pied de page, un cadre plein ferait une boîte opaque au
+ * milieu du dessin.
+ */
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--fg);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 10px 2px;
+  transition: border-color 0.4s var(--ease);
+}
+
+/* Safari iOS zoome la page dès qu'on touche un champ dont le texte
+   fait moins de 16 px, et n'en ressort pas seul. */
+@media (max-width: 700px) {
+  .field input,
+  .field select,
+  .field textarea {
+    font-size: 16px;
+  }
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 108px;
+  line-height: 1.55;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--fg-faint);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--fg-mute);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--hiviz);
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--hiviz);
+  outline-offset: 4px;
+}
+
+/* La liste déroulante native se colore au système : on repose les
+   couleurs du menu, sinon il sort en texte clair sur fond clair. */
+.field select option {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* ── Envoi ── */
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin-top: clamp(4px, 1vw, 10px);
+}
+
+.submit {
+  white-space: nowrap;
+}
+
+.note {
+  flex: 1 1 260px;
+  font-size: 9px;
+  line-height: 1.7;
+  color: var(--fg-mute);
+  text-transform: none;
+  letter-spacing: 0.06em;
+}

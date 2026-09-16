@@ -17,6 +17,27 @@ export const company = {
   copyright: "© Copyright 2026 PMSB",
 };
 
+/* ── Demande de devis ────────────────────────────────────────── */
+
+export const devis = {
+  tag: "Demande de devis",
+  title: "Décrivez votre chantier",
+  lede:
+    "Quelques lignes suffisent pour un premier chiffrage. Nous répondons sous 48 heures ouvrées.",
+  /** Familles de travaux proposées dans la liste déroulante. */
+  travaux: [
+    "Ravalement de façade",
+    "Isolation thermique par l'extérieur",
+    "Étanchéité",
+    "Travaux de rénovation",
+    "Autre / je ne sais pas encore",
+  ],
+  submit: "Envoyer la demande",
+  /** Affiché une fois le message remis au logiciel de messagerie. */
+  confirmation:
+    "Votre message est prêt dans votre logiciel de messagerie : il ne reste qu'à l'envoyer. Rien ne s'ouvre ? Écrivez-nous directement.",
+};
+
 export const nav = [
   { label: "Accueil", href: "/", index: "01" },
   { label: "Ravalement", href: "/ravalement", index: "02" },

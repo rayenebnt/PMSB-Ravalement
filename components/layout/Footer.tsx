@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { company, nav } from "@/lib/site";
+import QuoteForm from "../sections/QuoteForm";
 import SplitText from "../system/SplitText";
 import Magnetic from "../system/Magnetic";
 import s from "./Footer.module.css";
@@ -35,6 +36,9 @@ export default function Footer() {
             </Magnetic>
           </div>
         </div>
+
+        {/* ── Demande de devis ── */}
+        <QuoteForm />
 
         {/* ── Colonnes ── */}
         <div className={s.grid}>

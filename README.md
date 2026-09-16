@@ -85,6 +85,22 @@ et `<slug>-apres.jpeg`. JPEG, 1600 px sur le grand côté, qualité 80. Les
 deux photos d'une même paire gagnent à être cadrées pareil : le
 comparateur les superpose dans un cadre unique, en `object-fit: cover`.
 
+## La demande de devis
+
+Le formulaire du pied de page compose un courriel et le remet au
+logiciel de messagerie du visiteur : le site est statique, aucun
+serveur ne peut poster le message à sa place.
+
+Tout passe par la fonction `composer` de
+`components/sections/QuoteForm.tsx`. Brancher un envoi côté serveur ne
+demande que de la remplacer par un `fetch` vers une route, le reste du
+formulaire — champs, validation, confirmation — ne bouge pas. Il faudra
+alors un hébergement qui exécute du Node et les identifiants du service
+d'envoi.
+
+Les libellés, les familles de travaux et les textes de confirmation
+vivent dans `devis`, au début de `lib/site.ts`.
+
 ## Les scènes 3D
 
 Quatre scènes WebGL, toutes écrites à la main (aucun modèle importé) :
