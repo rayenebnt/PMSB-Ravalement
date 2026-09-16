@@ -87,8 +87,21 @@
  * plus comme une prise. Le filet, lui, s'efface en bout de course —
  * décalé de la coupe, il désignerait une limite qui n'existe plus.
  */
-/* Glissement à la poignée : le curseur natif ne garde que le clavier,
-   et le reste du cadre laisse passer le geste à ce qu'il y a dessous. */
+/*
+ * Glissement à la poignée : le curseur natif ne garde que le clavier,
+ * et le reste du cadre laisse passer le geste à ce qu'il y a dessous.
+ *
+ * `touch-action` doit suivre, et c'est lui qui compte au doigt : il se
+ * lit sur la cible du toucher et ses ancêtres, sans égard pour les
+ * `pointer-events` d'en dessous. Laissé à `pan-y`, il interdisait au
+ * navigateur de traiter le moindre geste horizontal parti du cadre —
+ * le rail restait figé sous le doigt. Rendu à `auto`, le navigateur
+ * fait défiler le rail ; seule la poignée, en `none`, garde la main.
+ */
+.frame[data-grip="handle"] {
+  touch-action: auto;
+}
+
 .frame[data-grip="handle"] .range {
   pointer-events: none;
 }
