@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import Header from "@/components/layout/Header";
@@ -83,6 +84,7 @@ export default function RootLayout({
         <Header />
         <main id="contenu">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
