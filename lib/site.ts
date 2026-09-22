@@ -18,6 +18,30 @@ export const company = {
   copyright: "© Copyright 2026 PMSB",
 };
 
+/**
+ * Horaires d'ouverture, repris à l'identique de la fiche d'établissement
+ * Google. Les deux doivent concorder : une divergence entre le site et la
+ * fiche est lue par Google comme une information peu fiable.
+ *
+ * `days` suit l'énumération schema.org ; les jours absents sont fermés.
+ */
+export const horaires = [
+  {
+    label: "Lundi – vendredi",
+    hours: "9h – 18h",
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  {
+    label: "Samedi",
+    hours: "9h – 14h",
+    days: ["Saturday"],
+    opens: "09:00",
+    closes: "14:00",
+  },
+];
+
 /* ── Demande de devis ────────────────────────────────────────── */
 
 export const devis = {

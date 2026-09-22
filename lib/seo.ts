@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { company } from "./site";
+import { company, horaires } from "./site";
 
 /**
  * Socle de référencement.
@@ -149,6 +149,12 @@ export function organizationSchema() {
         name,
       })),
     ],
+    openingHoursSpecification: horaires.map((plage) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: plage.days,
+      opens: plage.opens,
+      closes: plage.closes,
+    })),
     sameAs: [company.linkedin, company.googleBusiness],
     knowsAbout: [
       "Ravalement de façade",

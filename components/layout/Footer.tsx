@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { company, nav } from "@/lib/site";
+import { company, horaires, nav } from "@/lib/site";
 import QuoteForm from "../sections/QuoteForm";
 import { departements } from "@/lib/zones";
 import SplitText from "../system/SplitText";
@@ -60,6 +60,11 @@ export default function Footer() {
               <li>{company.phone}</li>
               <li>{company.email}</li>
               <li>{company.address}</li>
+              {horaires.map((plage) => (
+                <li key={plage.label}>
+                  {plage.label} : {plage.hours}
+                </li>
+              ))}
             </ul>
           </div>
 
