@@ -9,7 +9,7 @@ import { company } from "./site";
  * le sitemap, les aperçus de partage et le balisage schema.org.
  */
 
-export const SITE_URL = "https://pmsb-ravalement.fr";
+export const SITE_URL = "https://pmsbbatiment.fr";
 
 export const SITE_NAME = "PMSB";
 
