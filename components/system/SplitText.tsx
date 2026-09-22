@@ -12,7 +12,13 @@ interface Props {
 
 /**
  * Découpe un texte en mots masqués qui remontent l'un après l'autre.
+ *
  * Rendu côté serveur : aucune mesure DOM, aucun saut de mise en page.
+ * Le texte n'apparaît qu'une seule fois dans le document — un doublon
+ * masqué serait lu par les moteurs comme une répétition du titre.
+ *
+ * Les mots sont séparés par une véritable espace : un espacement obtenu
+ * par marge recollerait le titre en un seul mot à l'extraction.
  */
 export default function SplitText({
   text,
@@ -25,10 +31,9 @@ export default function SplitText({
 
   return (
     <Tag className={className} data-reveal="fade">
-      <span className={s.sr}>{text}</span>
-      <span aria-hidden="true" className={s.wrap}>
-        {words.map((word, i) => (
-          <span key={`${word}-${i}`} className={s.mask}>
+      {words.map((word, i) => (
+        <span key={`${word}-${i}`}>
+          <span className={s.mask}>
             <span
               className={s.word}
               style={{ transitionDelay: `${delay + i * stagger}ms` }}
@@ -36,8 +41,9 @@ export default function SplitText({
               {word}
             </span>
           </span>
-        ))}
-      </span>
+          {i < words.length - 1 ? " " : null}
+        </span>
+      ))}
     </Tag>
   );
 }

@@ -127,6 +127,44 @@ rendu serveur : sans WebGL, la page reste complète et lisible.
 - Les scènes 3D sont décoratives ou illustratives et marquées `aria-hidden`
   lorsqu'elles n'apportent pas d'information textuelle.
 
+## Référencement
+
+Le domaine est déclaré une seule fois, dans `lib/seo.ts` (`SITE_URL`).
+Tout en découle : URL canoniques, `sitemap.xml`, `robots.txt`, aperçus de
+partage et identifiants schema.org.
+
+- **Données structurées** — `HomeAndConstructionBusiness` avec `areaServed`
+  sur les huit départements franciliens, `Service` par prestation,
+  `BreadcrumbList` et `FAQPage`. C'est ce balisage qui rattache
+  l'entreprise à son territoire.
+- **Pages locales** — `lib/zones.ts` décrit les départements. Les quatre
+  marqués `featured` ont une page rédigée sous `/zones/<slug>` : bâti
+  rencontré sur place, points d'attention, communes, FAQ locale. Les
+  autres sont couverts par `/zones-d-intervention`.
+- **Titres** — chaque page porte un `h1` unique contenant la prestation
+  et la zone. `SplitText` sépare les mots par une véritable espace : un
+  espacement par marge CSS recollerait le titre en un seul mot lors de
+  l'extraction de texte.
+
+Ajouter un département : compléter `lib/zones.ts` avec `featured: true` et
+un contenu réellement propre au territoire. Une page dupliquée d'un
+département voisin dessert le site plutôt qu'elle ne le sert.
+
+### Ce qui reste à faire hors du code
+
+Le référencement local ne se joue pas entièrement dans les pages :
+
+1. **Fiche d'établissement Google** — c'est le premier levier sur les
+   requêtes « ravalement façade + ville ». À créer et à vérifier.
+2. **Search Console** — déclarer le domaine et y soumettre
+   `https://pmsb-ravalement.fr/sitemap.xml`.
+3. **Adresse complète et horaires** — compléter `organizationSchema()`
+   dans `lib/seo.ts` avec `streetAddress`, `geo` et `openingHours`.
+4. **Avis clients et photos de chantier datées** — ils nourrissent la
+   fiche d'établissement autant que les pages locales.
+5. **Mentions légales** — page absente, attendue pour un site
+   professionnel français.
+
 ## Note d'implémentation
 
 Un composant client monté par une Server Component devient un *point

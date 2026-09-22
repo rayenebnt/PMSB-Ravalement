@@ -18,7 +18,7 @@ export default function RavalementHero() {
     <PageHero
       index="02"
       tag="Ravalement"
-      title={ravalement.title}
+      title="Ravalement de façade"
       paragraphs={[ravalement.intro]}
       markers={["Pierre de taille", "Brique", "Plâtre", "Imperméabilisation"]}
       backdrop={

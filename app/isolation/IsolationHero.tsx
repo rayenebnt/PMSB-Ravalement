@@ -14,7 +14,7 @@ export default function IsolationHero() {
     <PageHero
       index="03"
       tag="Isolation"
-      title={isolation.title}
+      title="Isolation thermique par l'extérieur"
       paragraphs={isolation.introParagraphs}
       markers={[
         "Thermographie en direct",

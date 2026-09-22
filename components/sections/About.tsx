@@ -22,7 +22,7 @@ export default function About() {
                 priority={false}
               />
             </div>
-          </div>
+          </div> 
 
           <div className={s.badge} data-reveal="scale" data-reveal-delay="380">
             <span className={`display ${s.badgeNum}`}>15+</span>

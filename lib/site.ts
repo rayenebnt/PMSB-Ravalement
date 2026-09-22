@@ -12,7 +12,7 @@ export const company = {
   phoneHref: "tel:+33613401901",
   email: "pmsb.pmsb@yahoo.fr",
   emailHref: "mailto:pmsb.pmsb@yahoo.fr",
-  address: "94380 Bonneuil-Sur-Marne",
+  address: "94380 Bonneuil-sur-Marne",
   linkedin: "https://www.linkedin.com/in/sarl-pmsb-740726280/",
   copyright: "© Copyright 2026 PMSB",
 };
@@ -39,11 +39,24 @@ export const devis = {
 };
 
 export const nav = [
+<<<<<<< HEAD
   { label: "Accueil", href: "/", index: "01" },
   { label: "Ravalement", href: "/ravalement", index: "02" },
   { label: "Isolation", href: "/isolation", index: "03" },
   { label: "Étanchéité", href: "/etancheite", index: "04" },
   { label: "Réalisations", href: "/realisations", index: "05" },
+=======
+  { label: "Accueil", href: "/", index: "01", short: "Accueil" },
+  { label: "Ravalement", href: "/ravalement", index: "02", short: "Ravalement" },
+  { label: "Isolation", href: "/isolation", index: "03", short: "Isolation" },
+  { label: "Étanchéité", href: "/etancheite", index: "04", short: "Étanchéité" },
+  {
+    label: "Zones d'intervention",
+    href: "/zones-d-intervention",
+    index: "05",
+    short: "Zones",
+  },
+>>>>>>> claude/wonderful-fermat-1nvytj
 ];
 
 export const homeAnchors = [
@@ -444,5 +457,100 @@ export const method = [
     number: "04",
     title: "Finition",
     text: "Imperméabilisation, peinture et décoration : la façade retrouve son aspect d'origine et sa protection durable.",
+  },
+];
+
+/* ── Questions fréquentes ─────────────────────────────────────── */
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+/** Page d'accueil : les questions posées avant même de choisir un métier. */
+export const faqGenerale: FaqItem[] = [
+  {
+    question: "Dans quelles villes intervenez-vous ?",
+    answer:
+      "PMSB intervient sur toute l'Île-de-France depuis son siège de Bonneuil-sur-Marne (94). Nous travaillons principalement à Paris, dans le Val-de-Marne, en Seine-Saint-Denis et dans les Hauts-de-Seine, et nous nous déplaçons également sur la Seine-et-Marne, les Yvelines, l'Essonne et le Val-d'Oise.",
+  },
+  {
+    question: "Le ravalement de façade est-il obligatoire ?",
+    answer:
+      "Une commune peut enjoindre un propriétaire de faire ravaler sa façade, en principe tous les dix ans, au titre de l'article L.132-1 du Code de la construction et de l'habitation. L'obligation dépend donc de la commune. Au-delà du cadre légal, un ravalement régulier protège le mur des infiltrations et évite des reprises bien plus lourdes.",
+  },
+  {
+    question: "Combien coûte un ravalement de façade ?",
+    answer:
+      "Le prix dépend de la surface, de la nature du support, de l'état de la façade, du type de finition et des moyens d'accès. Deux immeubles voisins peuvent afficher des budgets très différents. Nous établissons un devis détaillé, poste par poste, après une visite sur place.",
+  },
+  {
+    question: "Qu'apporte la certification RGE ?",
+    answer:
+      "RGE signifie Reconnu Garant de l'Environnement. C'est une mention de qualité délivrée aux professionnels du bâtiment dans le domaine de l'efficacité énergétique. Elle conditionne l'accès à la plupart des aides à la rénovation énergétique : sans entreprise RGE, ces aides ne sont pas mobilisables.",
+  },
+  {
+    question: "Travaillez-vous pour les copropriétés ?",
+    answer:
+      "Oui, comme pour les propriétaires particuliers. Pour une copropriété, nous fournissons un devis détaillé poste par poste, directement exploitable lors de l'assemblée générale, et nous tenons le syndic informé pendant toute la durée du chantier.",
+  },
+  {
+    question: "Combien de temps dure un chantier ?",
+    answer:
+      "Cela dépend de la surface, de l'état du support et de la météo — un enduit ne s'applique ni par gel ni sous la pluie. La durée prévisionnelle est annoncée avec le devis, après diagnostic.",
+  },
+];
+
+export const faqRavalement: FaqItem[] = [
+  {
+    question: "Quelles façades savez-vous traiter ?",
+    answer:
+      "Pierre de taille, brique, plâtre et supports enduits. Chacune demande une technique propre : reconstitution et retaille pour la pierre, remplacement et rejointoiement pour la brique, reprise d'enduit pour le plâtre. Nous prenons également en charge l'imperméabilisation de façade.",
+  },
+  {
+    question: "Que recouvrent les classes I1 à I4 ?",
+    answer:
+      "Ce sont les quatre niveaux d'imperméabilité de façade. Ils vont du simple rafraîchissement à un revêtement capable de ponter des fissures actives. Le niveau retenu dépend de l'état du support et des fissures constatées au diagnostic. Nous prenons en charge les quatre.",
+  },
+  {
+    question: "Faut-il une autorisation pour ravaler une façade ?",
+    answer:
+      "Une déclaration préalable de travaux est généralement nécessaire, et les contraintes se durcissent en secteur protégé ou aux abords d'un monument historique. Si l'échafaudage empiète sur la voirie, une autorisation d'occupation s'y ajoute. Nous vous accompagnons sur ces démarches.",
+  },
+];
+
+export const faqIsolation: FaqItem[] = [
+  {
+    question: "Isolation par l'extérieur ou par l'intérieur ?",
+    answer:
+      "L'isolation par l'extérieur traite les ponts thermiques, ne réduit pas la surface habitable et rafraîchit l'aspect du bâtiment, puisqu'elle se termine par un enduit de finition. Elle se prête particulièrement à une opération couplée avec un ravalement.",
+  },
+  {
+    question: "Quel isolant choisir ?",
+    answer:
+      "La laine de roche est minérale et performante au feu comme en acoustique. Le polystyrène est économique et efficace sur les déperditions. Le graphité limite les ponts thermiques et améliore l'isolation acoustique. Le choix se fait après diagnostic, selon le support, l'épaisseur disponible et le niveau de performance visé.",
+  },
+  {
+    question: "Quelles économies peut-on attendre ?",
+    answer:
+      "Les réductions avancées tournent autour de 30 %. Le gain réel dépend de l'isolation existante, du mode de chauffage et des usages du logement. Au-delà de la facture, l'isolation extérieure stabilise la température intérieure et supprime l'effet de paroi froide.",
+  },
+];
+
+export const faqEtancheite: FaqItem[] = [
+  {
+    question: "Comment savoir si mon balcon doit être repris ?",
+    answer:
+      "Traces d'humidité au plafond du niveau inférieur, efflorescences, revêtement qui cloque ou se décolle, fissures en nez de dalle : ce sont les signes d'un complexe d'étanchéité arrivé en fin de vie. Plus la reprise tarde, plus l'eau atteint les aciers de la dalle.",
+  },
+  {
+    question: "Quels ouvrages traitez-vous ?",
+    answer:
+      "Balcons, terrasses, caves et parkings. Ce sont les ouvrages les plus exposés aux infiltrations, et ceux dont la structure souffre le plus vite lorsque l'eau passe.",
+  },
+  {
+    question: "Quels produits mettez-vous en œuvre ?",
+    answer:
+      "Un primaire d'accrochage pour lier le support et les couches suivantes, une peinture résine qui protège des intempéries, des UV et de l'abrasion, puis une laque de finition qui scelle l'ensemble et soigne l'aspect.",
   },
 ];

@@ -12,7 +12,11 @@ const preview: Record<string, string> = {
   "/ravalement": "/new-ravalement.jpg",
   "/isolation": "/new-isolation.jpg",
   "/etancheite": "/new-etancheite.jpg",
+<<<<<<< HEAD
   "/realisations": "/realisations/bardage-apres.jpeg",
+=======
+  "/zones-d-intervention": "/qui1.jpg",
+>>>>>>> claude/wonderful-fermat-1nvytj
 };
 
 export default function Header() {
@@ -104,7 +108,7 @@ export default function Header() {
                 className={`mono swipe-link ${s.deskLink}`}
                 data-active={pathname === item.href}
               >
-                {item.label}
+                {item.short}
               </Link>
             ))}
           </nav>
