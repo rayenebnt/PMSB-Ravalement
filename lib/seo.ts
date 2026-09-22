@@ -135,6 +135,13 @@ export function organizationSchema() {
       addressRegion: "Île-de-France",
       addressCountry: "FR",
     },
+    // Centre de Bonneuil-sur-Marne : l'entreprise intervient sur chantier,
+    // le point ne situe donc que la commune de rattachement.
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 48.7706,
+      longitude: 2.4886,
+    },
     areaServed: [
       { "@type": "AdministrativeArea", name: "Île-de-France" },
       ...IDF_DEPARTMENTS.map((name) => ({
@@ -142,7 +149,7 @@ export function organizationSchema() {
         name,
       })),
     ],
-    sameAs: [company.linkedin],
+    sameAs: [company.linkedin, company.googleBusiness],
     knowsAbout: [
       "Ravalement de façade",
       "Pierre de taille",
