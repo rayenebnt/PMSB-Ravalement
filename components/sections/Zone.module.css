@@ -1,0 +1,242 @@
+/* ══ Blocs partagés par les pages de zone ══════════════════════ */
+
+.section {
+  background: var(--bg);
+}
+
+/* ── Liste rédactionnelle à puces carrées ── */
+
+.bullets {
+  list-style: none;
+  display: grid;
+  gap: 0;
+  margin-top: clamp(36px, 5vw, 64px);
+  max-width: 90ch;
+  border-top: 1px solid var(--line);
+}
+
+.bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-block: clamp(14px, 1.8vw, 20px);
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(0.95rem, 1.05vw, 1.06rem);
+  line-height: 1.65;
+  color: var(--fg-mute);
+}
+
+.tick {
+  margin-top: 0.62em;
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: var(--hiviz-deep);
+  transform: rotate(45deg);
+}
+
+:global(.on-dark) .tick {
+  background: var(--hiviz);
+}
+
+/* ── Enjeux ── */
+
+.enjeux {
+  list-style: none;
+  display: grid;
+  gap: clamp(26px, 3vw, 44px);
+  margin-top: clamp(40px, 6vw, 80px);
+}
+
+@media (min-width: 860px) {
+  .enjeux {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.enjeu {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.enjeuNum {
+  font-size: 10px;
+  color: var(--hiviz-deep);
+}
+
+:global(.on-dark) .enjeuNum {
+  color: var(--hiviz);
+}
+
+.enjeuTitle {
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  line-height: 1.15;
+}
+
+/* ── Prestations ── */
+
+.prestations {
+  display: grid;
+  gap: clamp(20px, 2.6vw, 34px);
+  margin-top: clamp(40px, 6vw, 80px);
+}
+
+@media (min-width: 860px) {
+  .prestations {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.prestation {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: clamp(22px, 2.6vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg-alt);
+  transition: background-color 0.45s var(--ease), transform 0.6s var(--ease);
+}
+
+.prestation:hover {
+  background: var(--bg);
+  transform: translateY(-4px);
+}
+
+.prestationTitle {
+  font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+  line-height: 1.15;
+}
+
+.prestationLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ── Communes ── */
+
+.communes {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: clamp(32px, 4vw, 56px);
+  max-width: 1100px;
+}
+
+.commune {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.86rem;
+  color: var(--fg-mute);
+}
+
+.communesNote {
+  margin-top: 22px;
+  font-size: 10px;
+  color: var(--fg-faint);
+  max-width: 70ch;
+  line-height: 1.7;
+}
+
+/* ── Départements (page zones) ── */
+
+.deps {
+  display: grid;
+  gap: clamp(18px, 2.2vw, 28px);
+  margin-top: clamp(40px, 6vw, 80px);
+}
+
+@media (min-width: 760px) {
+  .deps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1160px) {
+  .deps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.dep {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: clamp(20px, 2.4vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: background-color 0.45s var(--ease), border-color 0.45s var(--ease);
+}
+
+.depLink:hover .dep,
+.dep:hover {
+  background: var(--bg-alt);
+}
+
+.depLink:hover .dep {
+  border-color: var(--hiviz-deep);
+}
+
+.depCode {
+  display: inline-block;
+  width: max-content;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--hiviz);
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.depName {
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.15;
+}
+
+.depLede {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--fg-mute);
+}
+
+.depCommunes {
+  font-size: 0.82rem;
+  color: var(--fg-faint);
+  line-height: 1.6;
+}
+
+.depMore {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+/* ── Rappel de contact ── */
+
+.callout {
+  margin-top: clamp(48px, 7vw, 96px);
+  padding-top: clamp(28px, 3.5vw, 48px);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .callout {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}
+
+.calloutText {
+  max-width: 56ch;
+}

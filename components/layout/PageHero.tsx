@@ -11,6 +11,10 @@ interface Props {
   backdrop?: ReactNode;
   /** Repères affichés en bas de la couverture. */
   markers?: string[];
+  /** Titre plus long : on réduit le corps pour qu'il tienne. */
+  compact?: boolean;
+  /** Étape intermédiaire du fil d'ariane. */
+  parent?: { label: string; href: string };
 }
 
 export default function PageHero({
@@ -20,9 +24,11 @@ export default function PageHero({
   paragraphs,
   backdrop,
   markers = [],
+  compact = false,
+  parent,
 }: Props) {
   return (
-    <section className={`on-dark ${s.hero}`}>
+    <section className={`on-dark ${s.hero}`} data-compact={compact}>
       {backdrop && <div className={s.backdrop}>{backdrop}</div>}
       <div className={s.veil} aria-hidden="true" />
 
@@ -32,6 +38,17 @@ export default function PageHero({
             Accueil
           </Link>
           <span className={`mono ${s.crumbSep}`}>/</span>
+          {parent && (
+            <>
+              <Link
+                href={parent.href}
+                className={`mono swipe-link ${s.crumbLink}`}
+              >
+                {parent.label}
+              </Link>
+              <span className={`mono ${s.crumbSep}`}>/</span>
+            </>
+          )}
           <span className={`mono ${s.crumbCurrent}`}>{tag}</span>
         </div>
 

@@ -1,18 +1,53 @@
 import type { Metadata } from "next";
+
 import EtancheiteHero from "./EtancheiteHero";
 import CardGrid from "@/components/sections/CardGrid";
 import Marquee from "@/components/system/Marquee";
-import { etancheite } from "@/lib/site";
+import Faq from "@/components/sections/Faq";
+import JsonLd from "@/components/system/JsonLd";
+import { company, etancheite, faqEtancheite } from "@/lib/site";
+import {
+  breadcrumbSchema,
+  faqSchema,
+  pageMetadata,
+  serviceSchema,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Étanchéité de balcons, caves et parkings",
-  description:
-    "PMSB met en œuvre des systèmes modernes d'étanchéité pour vos terrasses, balcons, caves et parkings : primaire d'accrochage, peinture résine et laque de finition.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Étanchéité de balcon, terrasse et parking en Île-de-France",
+  description: `Réfection d'étanchéité en Île-de-France : balcons, terrasses, caves et parkings. Primaire d'accrochage, peinture résine et laque de finition contre les infiltrations. Devis gratuit : ${company.phone}.`,
+  path: "/etancheite",
+  image: "/new-etancheite.jpg",
+  keywords: [
+    "étanchéité balcon",
+    "étanchéité terrasse",
+    "étanchéité parking",
+    "étanchéité cave",
+    "infiltration balcon",
+    "réfection étanchéité Île-de-France",
+  ],
+});
 
 export default function EtancheitePage() {
   return (
     <>
+      <JsonLd
+        data={[
+          serviceSchema({
+            name: "Étanchéité de balcons, terrasses, caves et parkings",
+            description:
+              "Réfection des complexes d'étanchéité : préparation du support, primaire d'accrochage, peinture résine et laque de finition, pour empêcher toute infiltration d'eau.",
+            path: "/etancheite",
+            serviceType: "Étanchéité",
+          }),
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Étanchéité", path: "/etancheite" },
+          ]),
+          faqSchema(faqEtancheite),
+        ]}
+      />
+
       <EtancheiteHero />
       <CardGrid
         id="types"
@@ -38,6 +73,11 @@ export default function EtancheitePage() {
         items={etancheite.products}
         columns={3}
         dark
+      />
+      <Faq
+        index="03"
+        title="Questions fréquentes sur l'étanchéité"
+        items={faqEtancheite}
       />
     </>
   );

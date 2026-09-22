@@ -18,14 +18,29 @@ export default function Hero() {
       <div className={`shell ${s.inner}`}>
         <p className={`mono tag ${s.eyebrow}`}>{company.tagline}</p>
 
-        <h1 className={`display ${s.title}`} aria-label={company.name}>
-          {company.name.split("").map((letter, i) => (
-            <span key={i} className={s.letterMask}>
-              <span className={s.letter} style={{ animationDelay: `${0.1 + i * 0.09}s` }}>
-                {letter}
+        {/*
+          Le titre principal porte le sigle ET la prestation : un h1
+          réduit à « PMSB » ne dit rien du métier ni du territoire.
+          Le sigle n'est écrit qu'une fois — une copie masquée pour les
+          lecteurs d'écran serait indexée comme une répétition.
+        */}
+        <h1 className={s.heading}>
+          <span className={`display ${s.title}`}>
+            {company.name.split("").map((letter, i) => (
+              <span key={i} className={s.letterMask}>
+                <span
+                  className={s.letter}
+                  style={{ animationDelay: `${0.1 + i * 0.09}s` }}
+                >
+                  {letter}
+                </span>
               </span>
-            </span>
-          ))}
+            ))}
+          </span>{" "}
+          <span className={`display ${s.claim}`}>
+            Ravalement de façade, isolation thermique et étanchéité en
+            Île-de-France
+          </span>
         </h1>
 
         <div className={s.bottom}>

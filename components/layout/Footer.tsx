@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { company, nav } from "@/lib/site";
+import { departements } from "@/lib/zones";
 import SplitText from "../system/SplitText";
 import Magnetic from "../system/Magnetic";
 import s from "./Footer.module.css";
@@ -77,6 +78,28 @@ export default function Footer() {
             <h3 className={`mono ${s.colTitle}`}>Qualification</h3>
             <img src="/label.png" alt="Certification RGE" className={s.label} />
           </div>
+        </div>
+
+        {/* ── Zones desservies ── */}
+        <div className={s.zones}>
+          <h3 className={`mono ${s.colTitle}`}>
+            Ravalement de façade en Île-de-France
+          </h3>
+          <ul className={s.zonesList}>
+            {departements.map((dep) => (
+              <li key={dep.slug}>
+                {dep.featured ? (
+                  <Link href={`/zones/${dep.slug}`} className="swipe-link">
+                    Ravalement {dep.inPhrase} ({dep.code})
+                  </Link>
+                ) : (
+                  <span>
+                    {dep.name} ({dep.code})
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* ── Signature ── */}
