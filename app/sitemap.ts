@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ravalement",
     "/isolation",
     "/etancheite",
+    "/realisations",
     "/zones-d-intervention",
     ...featuredDepartements.map((d) => `/zones/${d.slug}`),
   ];

@@ -1,10 +1,7 @@
 import Link from "next/link";
 import { company, nav } from "@/lib/site";
-<<<<<<< HEAD
 import QuoteForm from "../sections/QuoteForm";
-=======
 import { departements } from "@/lib/zones";
->>>>>>> claude/wonderful-fermat-1nvytj
 import SplitText from "../system/SplitText";
 import Magnetic from "../system/Magnetic";
 import s from "./Footer.module.css";

@@ -39,24 +39,22 @@ export const devis = {
 };
 
 export const nav = [
-<<<<<<< HEAD
-  { label: "Accueil", href: "/", index: "01" },
-  { label: "Ravalement", href: "/ravalement", index: "02" },
-  { label: "Isolation", href: "/isolation", index: "03" },
-  { label: "Étanchéité", href: "/etancheite", index: "04" },
-  { label: "Réalisations", href: "/realisations", index: "05" },
-=======
   { label: "Accueil", href: "/", index: "01", short: "Accueil" },
   { label: "Ravalement", href: "/ravalement", index: "02", short: "Ravalement" },
   { label: "Isolation", href: "/isolation", index: "03", short: "Isolation" },
   { label: "Étanchéité", href: "/etancheite", index: "04", short: "Étanchéité" },
   {
+    label: "Réalisations",
+    href: "/realisations",
+    index: "05",
+    short: "Réalisations",
+  },
+  {
     label: "Zones d'intervention",
     href: "/zones-d-intervention",
-    index: "05",
+    index: "06",
     short: "Zones",
   },
->>>>>>> claude/wonderful-fermat-1nvytj
 ];
 
 export const homeAnchors = [
