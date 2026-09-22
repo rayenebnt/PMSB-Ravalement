@@ -93,7 +93,7 @@ Le référencement local ne se joue pas entièrement dans les pages :
 1. **Fiche d'établissement Google** — c'est le premier levier sur les
    requêtes « ravalement façade + ville ». À créer et à vérifier.
 2. **Search Console** — déclarer le domaine et y soumettre
-   `https://pmsb-ravalement.fr/sitemap.xml`.
+   `https://pmsbbatiment.fr/sitemap.xml`.
 3. **Adresse complète et horaires** — compléter `organizationSchema()`
    dans `lib/seo.ts` avec `streetAddress`, `geo` et `openingHours`.
 4. **Avis clients et photos de chantier datées** — ils nourrissent la
