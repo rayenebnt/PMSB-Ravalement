@@ -12,7 +12,7 @@ export const company = {
   phoneHref: "tel:+33613401901",
   email: "pmsb.pmsb@yahoo.fr",
   emailHref: "mailto:pmsb.pmsb@yahoo.fr",
-  address: "94380 Bonneuil-Sur-Marne",
+  address: "94380 Bonneuil-sur-Marne",
   linkedin: "https://www.linkedin.com/in/sarl-pmsb-740726280/",
   copyright: "© Copyright 2023 PMSB",
 };
