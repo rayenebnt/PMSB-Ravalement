@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { company, horaires, nav } from "@/lib/site";
+import { company, credits, horaires, nav } from "@/lib/site";
 import QuoteForm from "../sections/QuoteForm";
 import { departements } from "@/lib/zones";
 import SplitText from "../system/SplitText";
@@ -115,6 +115,17 @@ export default function Footer() {
         <div className={s.bottom}>
           <span className="mono">{company.copyright}</span>
           <span className={`mono ${s.legal}`}>{company.legalName}</span>
+          <span className={`mono ${s.legal}`}>
+            {credits.prefix}{" "}
+            <a
+              href={credits.url}
+              target="_blank"
+              rel="noopener"
+              className={s.credit}
+            >
+              {credits.name}
+            </a>
+          </span>
         </div>
       </div>
 

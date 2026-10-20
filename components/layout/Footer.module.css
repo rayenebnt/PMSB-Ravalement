@@ -175,6 +175,19 @@
   color: var(--fg-faint);
 }
 
+.credit {
+  color: var(--fg-mute);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--line);
+  transition: color 0.3s var(--ease), text-decoration-color 0.3s var(--ease);
+}
+
+.credit:hover {
+  color: var(--hiviz);
+  text-decoration-color: currentColor;
+}
+
 /* ── Lettrage de fond ── */
 
 .watermark {

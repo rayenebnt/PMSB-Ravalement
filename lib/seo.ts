@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { company, horaires } from "./site";
+import { company, credits, horaires } from "./site";
 
 /**
  * Socle de référencement.
@@ -256,5 +256,13 @@ export function websiteSchema() {
     name: SITE_NAME,
     inLanguage: "fr-FR",
     publisher: { "@id": ORG_ID },
+    // `WebSite` est une `CreativeWork` : `creator` y désigne littéralement
+    // qui a réalisé le site. Rattache l'agence à une entité nommée plutôt
+    // qu'à un simple lien.
+    creator: {
+      "@type": "Organization",
+      name: credits.name,
+      url: credits.url,
+    },
   };
 }

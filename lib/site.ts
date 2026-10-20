@@ -19,6 +19,17 @@ export const company = {
 };
 
 /**
+ * Agence ayant réalisé le site. Le crédit est un lien éditorial légitime :
+ * texte d'ancrage limité au nom de l'agence, sans mot-clé ajouté — c'est
+ * l'enrichissement de l'ancre, pas le crédit lui-même, que Google sanctionne.
+ */
+export const credits = {
+  prefix: "Site réalisé par",
+  name: "LTNS",
+  url: "https://ltns.fr",
+};
+
+/**
  * Horaires d'ouverture, repris à l'identique de la fiche d'établissement
  * Google. Les deux doivent concorder : une divergence entre le site et la
  * fiche est lue par Google comme une information peu fiable.
